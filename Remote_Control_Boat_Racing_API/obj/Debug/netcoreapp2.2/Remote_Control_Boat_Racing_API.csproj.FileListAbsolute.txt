@@ -1,0 +1,14 @@
+C:\Users\patri\source\repos\Remote_Control_Boat_Racing_API\Remote_Control_Boat_Racing_API\bin\Debug\netcoreapp2.2\Remote_Control_Boat_Racing_API.deps.json
+C:\Users\patri\source\repos\Remote_Control_Boat_Racing_API\Remote_Control_Boat_Racing_API\bin\Debug\netcoreapp2.2\Remote_Control_Boat_Racing_API.runtimeconfig.json
+C:\Users\patri\source\repos\Remote_Control_Boat_Racing_API\Remote_Control_Boat_Racing_API\bin\Debug\netcoreapp2.2\Remote_Control_Boat_Racing_API.runtimeconfig.dev.json
+C:\Users\patri\source\repos\Remote_Control_Boat_Racing_API\Remote_Control_Boat_Racing_API\bin\Debug\netcoreapp2.2\Remote_Control_Boat_Racing_API.dll
+C:\Users\patri\source\repos\Remote_Control_Boat_Racing_API\Remote_Control_Boat_Racing_API\bin\Debug\netcoreapp2.2\Remote_Control_Boat_Racing_API.pdb
+C:\Users\patri\source\repos\Remote_Control_Boat_Racing_API\Remote_Control_Boat_Racing_API\obj\Debug\netcoreapp2.2\Remote_Control_Boat_Racing_API.csprojAssemblyReference.cache
+C:\Users\patri\source\repos\Remote_Control_Boat_Racing_API\Remote_Control_Boat_Racing_API\obj\Debug\netcoreapp2.2\Remote_Control_Boat_Racing_API.csproj.CoreCompileInputs.cache
+C:\Users\patri\source\repos\Remote_Control_Boat_Racing_API\Remote_Control_Boat_Racing_API\obj\Debug\netcoreapp2.2\Remote_Control_Boat_Racing_API.RazorAssemblyInfo.cache
+C:\Users\patri\source\repos\Remote_Control_Boat_Racing_API\Remote_Control_Boat_Racing_API\obj\Debug\netcoreapp2.2\Remote_Control_Boat_Racing_API.RazorAssemblyInfo.cs
+C:\Users\patri\source\repos\Remote_Control_Boat_Racing_API\Remote_Control_Boat_Racing_API\obj\Debug\netcoreapp2.2\Remote_Control_Boat_Racing_API.AssemblyInfoInputs.cache
+C:\Users\patri\source\repos\Remote_Control_Boat_Racing_API\Remote_Control_Boat_Racing_API\obj\Debug\netcoreapp2.2\Remote_Control_Boat_Racing_API.AssemblyInfo.cs
+C:\Users\patri\source\repos\Remote_Control_Boat_Racing_API\Remote_Control_Boat_Racing_API\obj\Debug\netcoreapp2.2\Remote_Control_Boat_Racing_API.RazorTargetAssemblyInfo.cache
+C:\Users\patri\source\repos\Remote_Control_Boat_Racing_API\Remote_Control_Boat_Racing_API\obj\Debug\netcoreapp2.2\Remote_Control_Boat_Racing_API.dll
+C:\Users\patri\source\repos\Remote_Control_Boat_Racing_API\Remote_Control_Boat_Racing_API\obj\Debug\netcoreapp2.2\Remote_Control_Boat_Racing_API.pdb
