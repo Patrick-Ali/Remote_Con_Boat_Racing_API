@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
-namespace WebApplication3.Controllers
+namespace Remote_Control_Boat_Racing_API.Controllers
 {
     public class Boat
     {
@@ -24,5 +24,27 @@ namespace WebApplication3.Controllers
         private string steering; //In-line rudder with break away
         private string coluors; //Orange, Gray, White
         private double weight; //12.5 lb(7.5kg)
+
+        Boat(double beam, string type, string driveSystem, double hullHeight,
+            string hullMaterial, double length, string motorSize, string propellerSize,
+            string radio, double scale, int speed, string speedControl, string steering,
+            string coluors, double weight) 
+        {
+             this.beam = beam;
+             this.type = type;
+             this.driveSystem = driveSystem;
+             this.hullHeight = hullHeight;
+             this.hullMaterial = hullMaterial;
+             this.length = length;
+             this.motorSize = motorSize;
+             this.propellerSize = propellerSize;
+             this.radio = radio;
+             this.scale = scale;
+             this.speed = speed;
+             this.speedControl = speedControl;
+             this.steering = steering;
+             this.coluors = coluors;
+             this.weight = weight;
+        }
     }
 }

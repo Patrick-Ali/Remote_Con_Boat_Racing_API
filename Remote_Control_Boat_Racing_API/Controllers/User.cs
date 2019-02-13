@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
-namespace WebApplication3.Controllers
+namespace Remote_Control_Boat_Racing_API.Controllers
 {
     public class User
     {
