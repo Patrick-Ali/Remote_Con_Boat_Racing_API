@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
+using Remote_Control_Boat_Racing_API.Services;
 
 namespace WebApplication3
 {
@@ -15,6 +16,7 @@ namespace WebApplication3
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<UserService>();
             services.AddMvc();
         }
 
