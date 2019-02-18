@@ -17,6 +17,7 @@ namespace WebApplication3
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<UserService>();
+            services.AddScoped<BoatService>();
             services.AddMvc();
         }
 
