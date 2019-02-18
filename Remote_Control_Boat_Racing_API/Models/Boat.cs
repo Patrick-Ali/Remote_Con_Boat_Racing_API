@@ -14,6 +14,9 @@ namespace Remote_Control_Boat_Racing_API.Models
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id;
 
+        [BsonElement("captain")]
+        public string CaptainID { get; set; }
+
         [BsonElement("beam")]
         public double Beam { get; set; } // 17.3 in (440mm)
 
