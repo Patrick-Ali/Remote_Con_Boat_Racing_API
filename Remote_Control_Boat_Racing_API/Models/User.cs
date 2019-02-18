@@ -15,41 +15,41 @@ namespace Remote_Control_Boat_Racing_API.Models
         public string Id;
 
         [BsonElement("firstName")]
-        public string firstName { get; set; }
+        public string FirstName { get; set; }
 
         [BsonElement("lastName")]
-        public string lastName { get; set; }
+        public string LastName { get; set; }
 
         [BsonElement("dob")]
-        public string dob { get; set; }
+        public string DOB { get; set; }
 
         [BsonElement("points")]
-        public int points { get; set; }
+        public int Points { get; set; }
 
         [BsonElement("posistion")]
-        public string posistion { get; set; }
+        public string Posistion { get; set; }
         //private Boat boat;
 
         [BsonElement("address")]
-        public string address { get; set; }
+        public string Address { get; set; }
 
         [BsonElement("postCode")]
-        public string postCode { get; set; }
+        public string PostCode { get; set; }
 
         [BsonElement("city")]
-        public string city { get; set; }
+        public string City { get; set; }
 
         [BsonElement("email")]
-        public string email { get; set; }
+        public string Email { get; set; }
 
         [BsonElement("password")]
-        public string password { get; set; }
+        public string Password { get; set; }
 
         [BsonElement("phoneNumber")]
-        public int phoneNumber { get; set; }
+        public int PhoneNumber { get; set; }
 
         [BsonElement("team")]
-        public string team { get; set; }
+        public string Team { get; set; }
 
         //User()
         //{
