@@ -31,6 +31,13 @@ namespace Remote_Control_Boat_Racing_API.Services
 
         public User Create(User user)
         {
+            List<User> users = Get();
+            foreach (User element in users) {
+                if (user.Email == element.Email) {
+                    return null;
+                }
+            }
+            
             _user.InsertOne(user);
             return user;
         }

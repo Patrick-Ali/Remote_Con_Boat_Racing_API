@@ -55,7 +55,9 @@ namespace Remote_Control_Boat_Racing_API.Controllers
         [HttpPost]
         public ActionResult<User> Post([FromBody] User user)
         {
-            _userService.Create(user);
+            if (_userService.Create(user) == null) {
+                return StatusCode(Microsoft.AspNetCore.Http.StatusCodes.Status406NotAcceptable);
+            }
             //Test test = new Test
             //{
             //    name = value.name,
