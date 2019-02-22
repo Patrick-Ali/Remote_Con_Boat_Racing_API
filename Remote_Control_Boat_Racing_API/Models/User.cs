@@ -24,7 +24,7 @@ namespace Remote_Control_Boat_Racing_API.Models
         public string DOB { get; set; }
 
         [BsonElement("points")]
-        public int Points { get; set; }
+        public string Points { get; set; }
 
         [BsonElement("posistion")]
         public string Posistion { get; set; }
@@ -46,7 +46,7 @@ namespace Remote_Control_Boat_Racing_API.Models
         public string Password { get; set; }
 
         [BsonElement("phoneNumber")]
-        public int PhoneNumber { get; set; }
+        public string PhoneNumber { get; set; }
 
         [BsonElement("team")]
         public string Team { get; set; }
