@@ -33,6 +33,22 @@ namespace Remote_Control_Boat_Racing_API.Services
         public User Create(User user)
         {
             List<User> users = Get();
+            string tempHold = Crypto.Decrypt(user.Email, passPhrase);
+            foreach (User element in users)
+            {
+                string temp = Crypto.Decrypt(element.Email, passPhrase);
+                if (user.Email == temp)
+                {
+                    return null;
+                }
+            }
+            _user.InsertOne(user);
+            return user;
+        }
+
+        public User CreateEnc(User user)
+        {
+            List<User> users = Get();
             foreach (User element in users) {
                 string temp = Crypto.Decrypt(element.Email, passPhrase);
                 if (user.Email == temp) {

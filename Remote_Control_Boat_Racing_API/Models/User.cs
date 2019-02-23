@@ -48,6 +48,9 @@ namespace Remote_Control_Boat_Racing_API.Models
         [BsonElement("phoneNumber")]
         public string PhoneNumber { get; set; }
 
+        [BsonElement("mobilePhoneNumber")]
+        public string MobilePhoneNumber { get; set; }
+
         [BsonElement("team")]
         public string Team { get; set; }
 
