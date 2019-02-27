@@ -104,5 +104,18 @@ namespace Remote_Control_Boat_Racing_API.Services
             }
             return randomBytes;
         }
+
+        public static string HashPassword(string password)
+        {
+            byte[] salt;
+            new RNGCryptoServiceProvider().GetBytes(salt = new byte[16]);
+            var pbkdf2 = new Rfc2898DeriveBytes(password, salt, 10000, HashAlgorithmName.SHA512);
+            byte[] hash = pbkdf2.GetBytes(512);
+            byte[] hashBytes = new byte[528];
+            Array.Copy(salt, 0, hashBytes, 0, 16);
+            Array.Copy(hash, 0, hashBytes, 16, 512);
+            string savedPasswordHash = Convert.ToBase64String(hashBytes);
+            return savedPasswordHash;
+        }
     }
 }
