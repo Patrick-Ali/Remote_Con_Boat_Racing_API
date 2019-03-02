@@ -72,7 +72,13 @@ namespace Remote_Control_Boat_Racing_API.Services
 
         public User Get(string id)
         {
-            return _user.Find<User>(user => user.Id == id).FirstOrDefault();
+            User tempUser = _user.Find<User>(user => user.Id == id).FirstOrDefault();
+            List<User> temp = new List<User>();
+            temp.Add(tempUser);
+            List<User> final = ChangeEnc(temp);
+            User sendUser = final[0];
+            return sendUser;
+            //return _user.Find<User>(user => user.Id == id).FirstOrDefault();
         }
 
         public User Create(User user)

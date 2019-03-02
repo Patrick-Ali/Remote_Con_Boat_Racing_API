@@ -71,7 +71,7 @@ namespace Remote_Control_Boat_Racing_API.Controllers
 
         // PUT api/<controller>/5
         [HttpPut("{id:length(24)}")]
-        public IActionResult Put(string id, User userIn)
+        public IActionResult Put(string id, [FromBody] User userIn)
         {
             var user = _userService.Get(id);
 
@@ -100,5 +100,6 @@ namespace Remote_Control_Boat_Racing_API.Controllers
 
             return NoContent();
         }
+
     }
 }

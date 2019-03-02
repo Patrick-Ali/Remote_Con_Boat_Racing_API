@@ -6,7 +6,7 @@ using System.Text;
 using System.Security.Cryptography;
 using System.IO;
 
-//Taken from https://stackoverflow.com/questions/10168240/encrypting-decrypting-a-string-in-c-sharp
+//Taken and altered from https://stackoverflow.com/questions/10168240/encrypting-decrypting-a-string-in-c-sharp
 
 namespace Remote_Control_Boat_Racing_API.Services
 {
@@ -105,6 +105,8 @@ namespace Remote_Control_Boat_Racing_API.Services
             return randomBytes;
         }
 
+        //Taken and altered from https://stackoverflow.com/questions/4181198/how-to-hash-a-password/10402129#10402129
+
         public static string HashPassword(string password)
         {
             byte[] salt;
@@ -116,6 +118,24 @@ namespace Remote_Control_Boat_Racing_API.Services
             Array.Copy(hash, 0, hashBytes, 16, 512);
             string savedPasswordHash = Convert.ToBase64String(hashBytes);
             return savedPasswordHash;
+        }
+
+        public static bool ConfirmPassword(string password, string storedPassword) {
+            byte[] hashBytes = Convert.FromBase64String(storedPassword);
+            byte[] salt = new byte[16];
+            Array.Copy(hashBytes, 0, salt, 0, 16);
+            var pbkdf2 = new Rfc2898DeriveBytes(password, salt, 10000, HashAlgorithmName.SHA512);
+            byte[] hash = pbkdf2.GetBytes(512);
+            for (int i = 0; i < 512; i++)
+            {
+                if (hashBytes[i + 16] != hash[i])
+                {
+                    return false;
+                }
+            }
+
+            return true;
+
         }
     }
 }
