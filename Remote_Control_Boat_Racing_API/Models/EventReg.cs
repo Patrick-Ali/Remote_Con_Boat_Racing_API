@@ -14,10 +14,10 @@ namespace Remote_Control_Boat_Racing_API.Models
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id;
 
-        [BsonElement("captain")]
-        public string CaptainID { get; set; }
+        [BsonElement("event")]
+        public string EventID { get; set; }
 
-        [BsonElement("pit")]
-        public string PitID { get; set; }
+        [BsonElement("team")]
+        public string TeamID { get; set; }
     }
 }
