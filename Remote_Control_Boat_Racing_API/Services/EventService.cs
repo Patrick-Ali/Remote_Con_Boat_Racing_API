@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MongoDB.Driver;
+using MongoDB.Bson;
+using MongoDB.Driver.GridFS;
+using System.IO;
 using Remote_Control_Boat_Racing_API.Models;
 using Microsoft.Extensions.Configuration;
 
@@ -11,12 +14,24 @@ namespace Remote_Control_Boat_Racing_API.Services
     public class EventService
     {
         private readonly IMongoCollection<Event> _event;
+        private readonly GridFSBucket bucket;
 
         public EventService(IConfiguration config)
         {
             var client = new MongoClient(config.GetConnectionString("RCBR"));
             var database = client.GetDatabase("RCBR");
             _event = database.GetCollection<Event>("Event");
+            bucket = new GridFSBucket(database);
+        }
+
+        public string UploadFile(byte[] stream) {
+            //IGridFSBucket bucket;
+            var t = Task.Run<ObjectId>(() => {
+                return
+                bucket.UploadFromBytesAsync("test7.pdf", stream);
+                //fs.UploadFromStreamAsync("test.pdf", stream);
+            });
+            return t.Result.ToString();
         }
 
         public List<Event> Get()
@@ -24,15 +39,38 @@ namespace Remote_Control_Boat_Racing_API.Services
             return _event.Find(events => true).ToList();
         }
 
-        public Event Get(string id)
+        public EventIn Get(string id)
         {
-            return _event.Find<Event>(events => events.Id == id).FirstOrDefault();
+            Event events = _event.Find<Event>(tempEvent => tempEvent.Id == id).FirstOrDefault();
+            ObjectId temp = ObjectId.Parse("5c7dd95f7c49e47484670a85");
+            var x = bucket.DownloadAsBytesAsync(temp);
+            Task.WaitAll(x);
+            EventIn eventIn = new EventIn()
+            {
+                VideoURL = events.VideoURL,
+                Name = events.Name,
+                Location = events.Location,
+                Date = events.Date,
+                TimeStart = events.TimeStart,
+                TimeEnd = events.TimeEnd,
+                EventFile = x.Result
+            };
+            return eventIn;
         }
 
-        public Event Create(Event events)
+        public Event Create(EventIn events)
         {
-            _event.InsertOne(events);
-            return events;
+            Event eventIn = new Event() {
+                VideoURL = events.VideoURL,
+                Name = events.Name,
+                Location = events.Location,
+                Date = events.Date,
+                TimeStart = events.TimeStart,
+                TimeEnd = events.TimeEnd,
+                EventFileID = UploadFile(events.EventFile)
+            };
+            _event.InsertOne(eventIn);
+            return eventIn;
         }
 
         public void Update(string id, Event eventsIn)

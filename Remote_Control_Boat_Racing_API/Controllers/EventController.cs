@@ -41,7 +41,7 @@ namespace Remote_Control_Boat_Racing_API.Controllers
 
         // GET api/<controller>/5
         [HttpGet("{id:length(24)}", Name = "GetEvent")]
-        public ActionResult<Event> Get(string id)
+        public ActionResult<EventIn> Get(string id)
         {
             var events = _eventService.Get(id);
             if (events == null)
@@ -55,9 +55,9 @@ namespace Remote_Control_Boat_Racing_API.Controllers
 
         // POST api/<controller>
         [HttpPost]
-        public ActionResult<Event> Post([FromBody] Event events)
+        public ActionResult<Event> Post([FromBody] EventIn events)
         {
-            _eventService.Create(events);
+            Event temp = _eventService.Create(events);
             //Test test = new Test
             //{
             //    name = value.name,
@@ -65,7 +65,7 @@ namespace Remote_Control_Boat_Racing_API.Controllers
             //};
 
             //collection.InsertOneAsync(user);
-            return CreatedAtRoute("GetEvent", new { id = events.Id.ToString() }, events);
+            return CreatedAtRoute("GetEvent", new { id = temp.Id.ToString() }, temp);
         }
 
         // PUT api/<controller>/5

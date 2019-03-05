@@ -14,6 +14,12 @@ namespace Remote_Control_Boat_Racing_API.Models
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id;
 
+        [BsonElement("videoURL")]
+        public string VideoURL { get; set; }
+
+        [BsonElement("eventFileID")]
+        public string EventFileID { get; set; }
+
         [BsonElement("name")]
         public string Name { get; set; }
 
@@ -32,3 +38,17 @@ namespace Remote_Control_Boat_Racing_API.Models
 
     }
 }
+
+// Front end form
+// Enter name, date, location, timeStart, and timeEnd, videoURL
+// Browse for file, select file
+// Turn file into bytes
+// send bytes and get file id
+// send event object with name, date, location, timeStart, timeEnd, videoURL,
+// and recived file id
+
+// Return file 
+// Load page get event info
+// provide link which wil trigger download file,
+// send file bytes 
+// convert bytes into file 

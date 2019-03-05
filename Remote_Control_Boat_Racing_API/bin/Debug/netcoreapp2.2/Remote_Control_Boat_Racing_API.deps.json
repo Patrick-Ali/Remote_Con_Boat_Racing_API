@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.2",
-    "signature": "0f1d1166cca8be4af00e9de15f51be734e23ecd4"
+    "signature": "5cfe76133fd826511f1e4304dd7a678cc20fd17a"
   },
   "compilationOptions": {
     "defines": [
@@ -28,7 +28,8 @@
           "Microsoft.AspNetCore.Razor.Design": "2.2.0",
           "Microsoft.NETCore.App": "2.2.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.2.0",
-          "MongoDB.Driver": "2.7.3"
+          "MongoDB.Driver": "2.7.3",
+          "MongoDB.Driver.GridFS": "2.7.3"
         },
         "runtime": {
           "Remote_Control_Boat_Racing_API.dll": {}
@@ -450,6 +451,23 @@
         },
         "compile": {
           "lib/netstandard1.5/MongoDB.Driver.Core.dll": {}
+        }
+      },
+      "MongoDB.Driver.GridFS/2.7.3": {
+        "dependencies": {
+          "MongoDB.Bson": "2.7.3",
+          "MongoDB.Driver": "2.7.3",
+          "MongoDB.Driver.Core": "2.7.3",
+          "NETStandard.Library": "2.0.3"
+        },
+        "runtime": {
+          "lib/netstandard1.5/MongoDB.Driver.GridFS.dll": {
+            "assemblyVersion": "2.7.3.0",
+            "fileVersion": "2.7.3.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard1.5/MongoDB.Driver.GridFS.dll": {}
         }
       },
       "NETStandard.Library/2.0.3": {
@@ -4057,6 +4075,13 @@
       "sha512": "sha512-UI5xOQSyCZRbjyKIj1j+d3ek4kz4d0TcAqT8dHQugV16n51KQfgXbHrSAKEAreeZcn+RF/BPirw+Bz/WlTQTdQ==",
       "path": "mongodb.driver.core/2.7.3",
       "hashPath": "mongodb.driver.core.2.7.3.nupkg.sha512"
+    },
+    "MongoDB.Driver.GridFS/2.7.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-L1SOCGrhOsh7nBAIbWhdoZOjGJaqQZ1kgau/GG8u0/4dPOFP5iXK1T+EBsEtmvwGSIKMMamq44zPGRqR6sozzg==",
+      "path": "mongodb.driver.gridfs/2.7.3",
+      "hashPath": "mongodb.driver.gridfs.2.7.3.nupkg.sha512"
     },
     "NETStandard.Library/2.0.3": {
       "type": "package",

@@ -14,9 +14,6 @@ namespace Remote_Control_Boat_Racing_API.Models
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id;
 
-        [BsonElement("captain")]
-        public string CaptainID { get; set; }
-
         [BsonElement("beam")]
         public double Beam { get; set; } // 17.3 in (440mm)
 
@@ -61,6 +58,10 @@ namespace Remote_Control_Boat_Racing_API.Models
 
         [BsonElement("wieght")]
         public double Weight { get; set; } //12.5 lb(7.5kg)
+
+        [BsonElement("captainID")]
+        public string CaptainID { get; set; }
+
 
         //Boat(double beam, string type, string driveSystem, double hullHeight,
         //    string hullMaterial, double length, string motorSize, string propellerSize,

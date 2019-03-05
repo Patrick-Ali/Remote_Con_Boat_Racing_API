@@ -20,5 +20,8 @@ namespace Remote_Control_Boat_Racing_API.Models
         [BsonElement("pit")]
         public string PitID { get; set; }
 
+        [BsonElement("recruiting")]
+        public string Recruiting { get; set; }
+
     }
 }
