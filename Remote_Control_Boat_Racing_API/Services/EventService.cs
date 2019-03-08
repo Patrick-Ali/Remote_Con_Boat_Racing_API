@@ -24,11 +24,11 @@ namespace Remote_Control_Boat_Racing_API.Services
             bucket = new GridFSBucket(database);
         }
 
-        public string UploadFile(byte[] stream) {
+        public string UploadFile(byte[] stream, string location, string date) {
             //IGridFSBucket bucket;
             var t = Task.Run<ObjectId>(() => {
                 return
-                bucket.UploadFromBytesAsync("test7.pdf", stream);
+                bucket.UploadFromBytesAsync(location+date+".pdf", stream);
                 //fs.UploadFromStreamAsync("test.pdf", stream);
             });
             return t.Result.ToString();
@@ -42,7 +42,7 @@ namespace Remote_Control_Boat_Racing_API.Services
         public EventIn Get(string id)
         {
             Event events = _event.Find<Event>(tempEvent => tempEvent.Id == id).FirstOrDefault();
-            ObjectId temp = ObjectId.Parse("5c7dd95f7c49e47484670a85");
+            ObjectId temp = ObjectId.Parse(events.EventFileID);
             var x = bucket.DownloadAsBytesAsync(temp);
             Task.WaitAll(x);
             EventIn eventIn = new EventIn()
@@ -67,7 +67,7 @@ namespace Remote_Control_Boat_Racing_API.Services
                 Date = events.Date,
                 TimeStart = events.TimeStart,
                 TimeEnd = events.TimeEnd,
-                EventFileID = UploadFile(events.EventFile)
+                EventFileID = UploadFile(events.EventFile, events.Location, events.Date)
             };
             _event.InsertOne(eventIn);
             return eventIn;

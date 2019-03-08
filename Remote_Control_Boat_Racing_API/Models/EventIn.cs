@@ -30,5 +30,7 @@ namespace Remote_Control_Boat_Racing_API.Models
 
 
         public string TimeEnd { get; set; }
+
+        public string Description { get; set; }
     }
 }

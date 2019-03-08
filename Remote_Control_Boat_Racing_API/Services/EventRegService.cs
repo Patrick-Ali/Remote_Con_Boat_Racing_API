@@ -16,7 +16,7 @@ namespace Remote_Control_Boat_Racing_API.Services
         {
             var client = new MongoClient(config.GetConnectionString("RCBR"));
             var database = client.GetDatabase("RCBR");
-            _eventReg = database.GetCollection<EventReg>("Event");
+            _eventReg = database.GetCollection<EventReg>("EventReg");
         }
 
         public List<EventReg> Get()

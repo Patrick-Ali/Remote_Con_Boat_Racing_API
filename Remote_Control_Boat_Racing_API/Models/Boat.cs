@@ -15,7 +15,7 @@ namespace Remote_Control_Boat_Racing_API.Models
         public string Id;
 
         [BsonElement("beam")]
-        public double Beam { get; set; } // 17.3 in (440mm)
+        public string Beam { get; set; } // 17.3 in (440mm)
 
         [BsonElement("type")]
         public string Type { get; set; } //Catamaran
@@ -24,13 +24,13 @@ namespace Remote_Control_Boat_Racing_API.Models
         public string DriveSystem { get; set; } //Flex shaft
 
         [BsonElement("hullHeight")]
-        public double HullHeight { get; set; } //9.5 in (241mm)
+        public string HullHeight { get; set; } //9.5 in (241mm)
 
         [BsonElement("hullMaterial")]
         public string HullMaterial { get; set; } //Fiberglass
 
         [BsonElement("length")]
-        public double Length { get; set; } //48 in (1245mm)
+        public string Length { get; set; } //48 in (1245mm)
 
         [BsonElement("motorSize")]
         public string MotorSize { get; set; } //6-pole 1000Kv 56×87mm
@@ -42,10 +42,10 @@ namespace Remote_Control_Boat_Racing_API.Models
         public string Radio { get; set; } //Spektrum DX2E
 
         [BsonElement("scale")]
-        public double Scale { get; set; }  //48-inch
+        public string Scale { get; set; }  //48-inch
 
         [BsonElement("speed")]
-        public int Speed { get; set; } //55+ mph with 8S Li-Po
+        public string Speed { get; set; } //55+ mph with 8S Li-Po
 
         [BsonElement("speedControl")]
         public string SpeedControl { get; set; } //Dynamite 160A HV 2S-8S
@@ -57,7 +57,7 @@ namespace Remote_Control_Boat_Racing_API.Models
         public string Coluors { get; set; } //Orange, Gray, White
 
         [BsonElement("wieght")]
-        public double Weight { get; set; } //12.5 lb(7.5kg)
+        public string Weight { get; set; } //12.5 lb(7.5kg)
 
         [BsonElement("captainID")]
         public string CaptainID { get; set; }

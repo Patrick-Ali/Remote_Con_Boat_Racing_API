@@ -35,6 +35,9 @@ namespace Remote_Control_Boat_Racing_API.Models
         [BsonElement("timeEnd")]
         public string TimeEnd { get; set; }
 
+        [BsonElement("description")]
+        public string Description { get; set; }
+
 
     }
 }
