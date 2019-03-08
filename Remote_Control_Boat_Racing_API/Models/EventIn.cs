@@ -8,7 +8,7 @@ namespace Remote_Control_Boat_Racing_API.Models
     public class EventIn
     {
 
-        public string Id;
+        public string Id { get; set; }
 
 
         public string VideoURL { get; set; }

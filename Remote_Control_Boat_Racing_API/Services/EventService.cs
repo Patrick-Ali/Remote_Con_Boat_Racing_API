@@ -47,12 +47,14 @@ namespace Remote_Control_Boat_Racing_API.Services
             Task.WaitAll(x);
             EventIn eventIn = new EventIn()
             {
+                Id = events.Id,
                 VideoURL = events.VideoURL,
                 Name = events.Name,
                 Location = events.Location,
                 Date = events.Date,
                 TimeStart = events.TimeStart,
                 TimeEnd = events.TimeEnd,
+                Description = events.Description,
                 EventFile = x.Result
             };
             return eventIn;
