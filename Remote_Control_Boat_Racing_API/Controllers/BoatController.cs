@@ -16,9 +16,7 @@ namespace Remote_Control_Boat_Racing_API.Controllers
     public class BoatController : ControllerBase
     {
         private readonly BoatService  _boatService;
-        //private static MongoClient mongoClient = new MongoClient();
-        //private static MongoDB.Driver.IMongoDatabase db = mongoClient.GetDatabase("RCBR");
-        //private static IMongoCollection<User> collection = db.GetCollection<User>("User");
+
 
         // GET: api/<controller>
 
@@ -30,74 +28,111 @@ namespace Remote_Control_Boat_Racing_API.Controllers
         [HttpGet]
         public ActionResult<List<Boat>> Get()
         {
+            try
+            {
+                return _boatService.Get();
+            }
+            catch(Exception e)
+            {
+                string message = e.Message;
+                string stackTrace = e.StackTrace;
 
-            return _boatService.Get();
-            //var all = collection.Find(x => x.name == "John Smith").ToList();
-
-            //var all = collection.Find(_ => true).ToList();
-
-            //return all; //new string[] { "value1", "value2" };
+                return StatusCode(Microsoft.AspNetCore.Http.StatusCodes.Status500InternalServerError);
+            }
         }
 
         // GET api/<controller>/5
         [HttpGet("{id:length(24)}", Name = "GetBoat")]
         public ActionResult<Boat> Get(string id)
         {
-            var boat = _boatService.Get(id);
-            if (boat == null)
+            try
             {
-                return NotFound();
-            }
+                var boat = _boatService.Get(id);
+                if (boat == null)
+                {
+                    return NotFound();
+                }
 
-            //var all = collection.Find(x => x.age == idd).ToList();
-            return boat;
+                return boat;
+            }
+            catch (Exception e)
+            {
+                string message = e.Message;
+                string stackTrace = e.StackTrace;
+
+                return StatusCode(Microsoft.AspNetCore.Http.StatusCodes.Status500InternalServerError);
+            }
         }
 
         // POST api/<controller>
         [HttpPost]
         public ActionResult<Boat> Post([FromBody] Boat boat)
         {
-            _boatService.Create(boat);
-            //Test test = new Test
-            //{
-            //    name = value.name,
-            //    age = value.age
-            //};
+            try
+            {
+                _boatService.Create(boat);
 
-            //collection.InsertOneAsync(user);
-            return CreatedAtRoute("GetBoat", new { id = boat.Id.ToString() }, boat);
+                return CreatedAtRoute("GetBoat", new { id = boat.Id.ToString() }, boat);
+            }
+            catch (Exception e)
+            {
+                string message = e.Message;
+                string stackTrace = e.StackTrace;
+
+                return StatusCode(Microsoft.AspNetCore.Http.StatusCodes.Status500InternalServerError);
+            }
         }
 
         // PUT api/<controller>/5
         [HttpPut("{id:length(24)}")]
         public IActionResult Put(string id, Boat boatIn)
         {
-            var boat = _boatService.Get(id);
-
-            if (boat == null)
+            try
             {
-                return NotFound();
+                var boat = _boatService.Get(id);
+
+                if (boat == null)
+                {
+                    return NotFound();
+                }
+
+                _boatService.Update(id, boatIn);
+
+                return NoContent();
             }
+            catch (Exception e)
+            {
+                string message = e.Message;
+                string stackTrace = e.StackTrace;
 
-            _boatService.Update(id, boatIn);
-
-            return NoContent();
+                return StatusCode(Microsoft.AspNetCore.Http.StatusCodes.Status500InternalServerError);
+            }
         }
 
         // DELETE api/<controller>/5
         [HttpDelete("{id:length(24)}")]
         public IActionResult Delete(string id)
         {
-            var boat = _boatService.Get(id);
-
-            if (boat == null)
+            try
             {
-                return NotFound();
+                var boat = _boatService.Get(id);
+
+                if (boat == null)
+                {
+                    return NotFound();
+                }
+
+                _boatService.Remove(boat.Id);
+
+                return NoContent();
             }
+            catch (Exception e)
+            {
+                string message = e.Message;
+                string stackTrace = e.StackTrace;
 
-            _boatService.Remove(boat.Id);
-
-            return NoContent();
+                return StatusCode(Microsoft.AspNetCore.Http.StatusCodes.Status500InternalServerError);
+            }
         }
     }
 }

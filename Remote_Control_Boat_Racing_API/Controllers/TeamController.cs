@@ -16,88 +16,123 @@ namespace Remote_Control_Boat_Racing_API.Controllers
     public class TeamController : ControllerBase
     {
         private readonly TeamService _teamService;
-        //private static MongoClient mongoClient = new MongoClient();
-        //private static MongoDB.Driver.IMongoDatabase db = mongoClient.GetDatabase("RCBR");
-        //private static IMongoCollection<User> collection = db.GetCollection<User>("User");
 
-        // GET: api/<controller>
-
+        
         public TeamController(TeamService teamService)
         {
             _teamService = teamService;
         }
 
+        // GET: api/<controller>
         [HttpGet]
         public ActionResult<List<Team>> Get()
         {
+            try
+            {
+                return _teamService.Get();
+            }
+            catch (Exception e)
+            {
+                string message = e.Message;
+                string stackTrace = e.StackTrace;
 
-            return _teamService.Get();
-            //var all = collection.Find(x => x.name == "John Smith").ToList();
+                return StatusCode(Microsoft.AspNetCore.Http.StatusCodes.Status500InternalServerError);
+            }
 
-            //var all = collection.Find(_ => true).ToList();
-
-            //return all; //new string[] { "value1", "value2" };
         }
 
         // GET api/<controller>/5
         [HttpGet("{id:length(24)}", Name = "GetTeam")]
         public ActionResult<Team> Get(string id)
         {
-            var teams = _teamService.Get(id);
-            if (teams == null)
+            try
             {
-                return NotFound();
-            }
+                var teams = _teamService.Get(id);
+                if (teams == null)
+                {
+                    return NotFound();
+                }
 
-            //var all = collection.Find(x => x.age == idd).ToList();
-            return teams;
+                return teams;
+            }
+            catch (Exception e)
+            {
+                string message = e.Message;
+                string stackTrace = e.StackTrace;
+
+                return StatusCode(Microsoft.AspNetCore.Http.StatusCodes.Status500InternalServerError);
+            }
         }
 
         // POST api/<controller>
         [HttpPost]
         public ActionResult<Team> Post([FromBody] Team teams)
         {
-            _teamService.Create(teams);
-            //Test test = new Test
-            //{
-            //    name = value.name,
-            //    age = value.age
-            //};
+            try
+            {
+                _teamService.Create(teams);
 
-            //collection.InsertOneAsync(user);
-            return CreatedAtRoute("GetTeam", new { id = teams.Id.ToString() }, teams);
+                return CreatedAtRoute("GetTeam", new { id = teams.Id.ToString() }, teams);
+            }
+            catch (Exception e)
+            {
+                string message = e.Message;
+                string stackTrace = e.StackTrace;
+
+                return StatusCode(Microsoft.AspNetCore.Http.StatusCodes.Status500InternalServerError);
+            }
         }
 
         // PUT api/<controller>/5
         [HttpPut("{id:length(24)}")]
         public IActionResult Put(string id, Team teamsIn)
         {
-            var teams = _teamService.Get(id);
-
-            if (teams == null)
+            try
             {
-                return NotFound();
+                var teams = _teamService.Get(id);
+
+                if (teams == null)
+                {
+                    return NotFound();
+                }
+
+                _teamService.Update(id, teamsIn);
+
+                return NoContent();
             }
+            catch (Exception e)
+            {
+                string message = e.Message;
+                string stackTrace = e.StackTrace;
 
-            _teamService.Update(id, teamsIn);
-
-            return NoContent();
+                return StatusCode(Microsoft.AspNetCore.Http.StatusCodes.Status500InternalServerError);
+            }
         }
 
         // DELETE api/<controller>/5
         [HttpDelete("{id:length(24)}")]
         public IActionResult Delete(string id)
         {
-            var teams = _teamService.Get(id);
-
-            if (teams == null)
+            try
             {
-                return NotFound();
+                var teams = _teamService.Get(id);
+
+                if (teams == null)
+                {
+                    return NotFound();
+                }
+
+                _teamService.Remove(teams.Id);
+
+                return NoContent();
             }
+            catch (Exception e)
+            {
+                string message = e.Message;
+                string stackTrace = e.StackTrace;
 
-            _teamService.Remove(teams.Id);
-
-            return NoContent();
+                return StatusCode(Microsoft.AspNetCore.Http.StatusCodes.Status500InternalServerError);
+            }
         }
     }
 }

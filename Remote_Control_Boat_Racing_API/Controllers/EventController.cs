@@ -16,9 +16,7 @@ namespace Remote_Control_Boat_Racing_API.Controllers
     public class EventController : ControllerBase
     {
         private readonly EventService _eventService;
-        //private static MongoClient mongoClient = new MongoClient();
-        //private static MongoDB.Driver.IMongoDatabase db = mongoClient.GetDatabase("RCBR");
-        //private static IMongoCollection<User> collection = db.GetCollection<User>("User");
+
 
         // GET: api/<controller>
 
@@ -30,74 +28,111 @@ namespace Remote_Control_Boat_Racing_API.Controllers
         [HttpGet]
         public ActionResult<List<Event>> Get()
         {
+            try
+            {
+                return _eventService.Get();
+            }
+            catch (Exception e)
+            {
+                string message = e.Message;
+                string stackTrace = e.StackTrace;
 
-            return _eventService.Get();
-            //var all = collection.Find(x => x.name == "John Smith").ToList();
-
-            //var all = collection.Find(_ => true).ToList();
-
-            //return all; //new string[] { "value1", "value2" };
+                return StatusCode(Microsoft.AspNetCore.Http.StatusCodes.Status500InternalServerError);
+            }
         }
 
         // GET api/<controller>/5
         [HttpGet("{id:length(24)}", Name = "GetEvent")]
         public ActionResult<EventIn> Get(string id)
         {
-            var events = _eventService.Get(id);
-            if (events == null)
+            try
             {
-                return NotFound();
-            }
+                var events = _eventService.Get(id);
+                if (events == null)
+                {
+                    return NotFound();
+                }
 
-            //var all = collection.Find(x => x.age == idd).ToList();
-            return events;
+                return events;
+            }
+            catch (Exception e)
+            {
+                string message = e.Message;
+                string stackTrace = e.StackTrace;
+
+                return StatusCode(Microsoft.AspNetCore.Http.StatusCodes.Status500InternalServerError);
+            }
         }
 
         // POST api/<controller>
         [HttpPost]
         public ActionResult<Event> Post([FromBody] EventIn events)
         {
-            Event temp = _eventService.Create(events);
-            //Test test = new Test
-            //{
-            //    name = value.name,
-            //    age = value.age
-            //};
+            try
+            {
+                Event temp = _eventService.Create(events);
 
-            //collection.InsertOneAsync(user);
-            return CreatedAtRoute("GetEvent", new { id = temp.Id.ToString() }, temp);
+                return CreatedAtRoute("GetEvent", new { id = temp.Id.ToString() }, temp);
+            }
+            catch (Exception e)
+            {
+                string message = e.Message;
+                string stackTrace = e.StackTrace;
+
+                return StatusCode(Microsoft.AspNetCore.Http.StatusCodes.Status500InternalServerError);
+            }
         }
 
         // PUT api/<controller>/5
         [HttpPut("{id:length(24)}")]
         public IActionResult Put(string id, Event eventsIn)
         {
-            var events = _eventService.Get(id);
-
-            if (events == null)
+            try
             {
-                return NotFound();
+                var events = _eventService.Get(id);
+
+                if (events == null)
+                {
+                    return NotFound();
+                }
+
+                _eventService.Update(id, eventsIn);
+
+                return NoContent();
             }
+            catch (Exception e)
+            {
+                string message = e.Message;
+                string stackTrace = e.StackTrace;
 
-            _eventService.Update(id, eventsIn);
-
-            return NoContent();
+                return StatusCode(Microsoft.AspNetCore.Http.StatusCodes.Status500InternalServerError);
+            }
         }
 
         // DELETE api/<controller>/5
         [HttpDelete("{id:length(24)}")]
         public IActionResult Delete(string id)
         {
-            var events = _eventService.Get(id);
-
-            if (events == null)
+            try
             {
-                return NotFound();
+                var events = _eventService.Get(id);
+
+                if (events == null)
+                {
+                    return NotFound();
+                }
+
+                _eventService.Remove(events.Id);
+
+                return NoContent();
             }
+            catch (Exception e)
+            {
+                string message = e.Message;
+                string stackTrace = e.StackTrace;
 
-            _eventService.Remove(events.Id);
-
-            return NoContent();
+                return StatusCode(Microsoft.AspNetCore.Http.StatusCodes.Status500InternalServerError);
+            }
         }
     }
 }

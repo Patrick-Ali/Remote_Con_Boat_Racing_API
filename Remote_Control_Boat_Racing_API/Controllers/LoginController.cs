@@ -22,33 +22,82 @@ namespace Remote_Control_Boat_Racing_API.Controllers
             _loginService = loginService;
         }
 
-        public List<User> Get() {
+        public List<User> Get()
+        {
             return _userService.Get();
         }
 
         [HttpGet("{id:length(24)}", Name = "GetUser2")]
         public ActionResult<User> Get(string id)
         {
-            var user = _userService.Get(id);
-            if (user == null)
+            try
             {
-                return NotFound();
-            }
+                var user = _userService.Get(id);
+                if (user == null)
+                {
+                    return NotFound();
+                }
 
-            //var all = collection.Find(x => x.age == idd).ToList();
-            return user;
+
+                return user;
+            }
+            catch (Exception e)
+            {
+                string message = e.Message;
+                string stackTrace = e.StackTrace;
+
+                return StatusCode(Microsoft.AspNetCore.Http.StatusCodes.Status500InternalServerError);
+            }
         }
 
         [HttpPost]
-        public ActionResult<Login> Login([FromBody] InLogin login) {
-            List<User> users = Get();
-            Login log = _loginService.Login(login.Email, login.Password, users);
-            if (log == null)
+        public ActionResult<Login> Login([FromBody] InLogin login)
+        {
+            try
             {
-                return StatusCode(Microsoft.AspNetCore.Http.StatusCodes.Status406NotAcceptable);
+                List<User> users = Get();
+
+                Login log = _loginService.Login(login.Email, login.Password, users);
+
+                if (log == null)
+                {
+                    return StatusCode(Microsoft.AspNetCore.Http.StatusCodes.Status406NotAcceptable);
+                }
+                
+                return CreatedAtRoute("GetUser2", new { id = log.Id.ToString() }, log);
             }
-            //return log;
-            return CreatedAtRoute("GetUser2", new { id = log.Id.ToString() }, log);
+            catch (Exception e)
+            {
+                string message = e.Message;
+                string stackTrace = e.StackTrace;
+
+                return StatusCode(Microsoft.AspNetCore.Http.StatusCodes.Status500InternalServerError);
+            }
+        }
+
+        [HttpPost("{email}")]
+        public ActionResult<bool> Post(string email)
+        {
+            try
+            {
+                List<User> users = Get();
+                bool test = _loginService.Check(email, users);
+                //User hold = _userService.Create(user);
+                if (test == false)
+                {
+                    return StatusCode(Microsoft.AspNetCore.Http.StatusCodes.Status406NotAcceptable);
+                }
+
+                return StatusCode(Microsoft.AspNetCore.Http.StatusCodes.Status202Accepted);
+            }
+            catch (Exception e)
+            {
+                string message = e.Message;
+                string stackTrace = e.StackTrace;
+
+                return StatusCode(Microsoft.AspNetCore.Http.StatusCodes.Status500InternalServerError);
+            }
+
         }
     }
 }

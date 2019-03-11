@@ -47,6 +47,19 @@ namespace Remote_Control_Boat_Racing_API.Services
             return null;
         }
 
+        public bool Check(string email, List<User> users) {
+            //string tempHold = Crypto.Decrypt(email, passPhrase);
+            foreach (User element in users)
+            {
+                string temp = Crypto.Decrypt(element.Email, passPhrase);
+                if (email == temp)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
 
     }
 }
