@@ -22,6 +22,8 @@ namespace WebApplication3
             services.AddScoped<EventService>();
             services.AddScoped<UserService>();
             services.AddScoped<BoatService>();
+            services.AddScoped<AdminService>();
+            services.AddScoped<AdminLoginService>();
             services.AddMvc();
         }
 
