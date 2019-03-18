@@ -46,6 +46,7 @@ namespace Remote_Control_Boat_Racing_API.Services
                 user.Posistion = Crypto.Decrypt(user.Posistion, passPhrase2);
                 user.PhoneNumber = Crypto.Decrypt(user.PhoneNumber, passPhrase2);
                 user.MobilePhoneNumber = Crypto.Decrypt(user.MobilePhoneNumber, passPhrase2);
+                user.Points = Crypto.Decrypt(user.Points, passPhrase2);
 
                 //string passHold = Crypto.HashPassword(user.Password);
 
@@ -59,11 +60,12 @@ namespace Remote_Control_Boat_Racing_API.Services
                 crypto.LastName = Crypto.Encrypt(user.LastName, passPhrase);
                 crypto.PostCode = Crypto.Encrypt(user.PostCode, passPhrase);
                 crypto.Password = Crypto.Encrypt(user.Password, passPhrase);
-                crypto.Team = Crypto.Encrypt(user.Team, passPhrase2);
+                crypto.Team = Crypto.Encrypt(user.Team, passPhrase);
                 crypto.Posistion = Crypto.Encrypt(user.Posistion, passPhrase);
                 crypto.Points = Crypto.Encrypt(user.Points, passPhrase);
                 crypto.PhoneNumber = Crypto.Encrypt(user.PhoneNumber, passPhrase);
                 crypto.MobilePhoneNumber = Crypto.Encrypt(user.MobilePhoneNumber, passPhrase);
+               
 
                 publicEncUsers.Add(crypto);
             }
@@ -88,17 +90,17 @@ namespace Remote_Control_Boat_Racing_API.Services
             foreach (User element in users)
             {
                 string temp = Crypto.Decrypt(element.Email, passPhrase);
-                if (user.Email == temp)
+                if (tempHold == temp)
                 {
                     return null;
                 }
             }
-            User crypto = CreateEnc(user);
+            User crypto = CreateEnc(user, false);
             _user.InsertOne(crypto);
             return crypto;
         }
 
-        public User CreateEnc(User user)
+        public User CreateEnc(User user, Boolean update)
         {
 
             user.Address = Crypto.Decrypt(user.Address, passPhrase);
@@ -113,8 +115,14 @@ namespace Remote_Control_Boat_Racing_API.Services
             user.Posistion = Crypto.Decrypt(user.Posistion, passPhrase);
             user.PhoneNumber = Crypto.Decrypt(user.PhoneNumber, passPhrase);
             user.MobilePhoneNumber = Crypto.Decrypt(user.MobilePhoneNumber, passPhrase);
+            user.Points = Crypto.Decrypt(user.Points, passPhrase);
 
-            string passHold = Crypto.HashPassword(user.Password);
+            string passHold = user.Password;
+
+            if (update == false)
+            {
+                passHold = Crypto.HashPassword(user.Password);
+            }
 
             User crypto = new User();
             crypto.Address = Crypto.Encrypt(user.Address, passPhrase2);
@@ -136,7 +144,9 @@ namespace Remote_Control_Boat_Racing_API.Services
 
         public void Update(string id, User userIn)
         {
-            _user.ReplaceOne(user => user.Id == id, userIn);
+            User crypto = CreateEnc(userIn, true);
+            crypto.Id = userIn.Id;
+            _user.ReplaceOne(user => user.Id == id, crypto);
         }
 
         public void Remove(User userIn)
