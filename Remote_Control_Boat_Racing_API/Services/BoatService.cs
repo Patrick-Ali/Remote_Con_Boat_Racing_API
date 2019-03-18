@@ -31,13 +31,22 @@ namespace Remote_Control_Boat_Racing_API.Services
 
         public Boat Create(Boat boat)
         {
+            List<Boat> boats = Get();
+            foreach (Boat boatTemp in boats)
+            {
+                if (boatTemp.CaptainID == boat.CaptainID)
+                {
+                    return null;
+                }
+            }
             _boat.InsertOne(boat);
             return boat;
         }
 
-        public void Update(string id, Boat userIn)
+        public void Update(string id, Boat boatIn)
         {
-            _boat.ReplaceOne(boat => boat.Id == id, userIn);
+
+            _boat.ReplaceOne(boat => boat.CaptainID == boatIn.CaptainID, boatIn);
         }
 
         public void Remove(Boat boatIn)

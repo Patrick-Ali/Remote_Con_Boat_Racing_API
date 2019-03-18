@@ -70,7 +70,11 @@ namespace Remote_Control_Boat_Racing_API.Controllers
         {
             try
             {
-                _boatService.Create(boat);
+               Boat hold = _boatService.Create(boat);
+                if (hold == null)
+                {
+                    return StatusCode(Microsoft.AspNetCore.Http.StatusCodes.Status406NotAcceptable);
+                }
 
                 return CreatedAtRoute("GetBoat", new { id = boat.Id.ToString() }, boat);
             }
@@ -85,7 +89,7 @@ namespace Remote_Control_Boat_Racing_API.Controllers
 
         // PUT api/<controller>/5
         [HttpPut("{id:length(24)}")]
-        public IActionResult Put(string id, Boat boatIn)
+        public IActionResult Put(string id, [FromBody] Boat boatIn)
         {
             try
             {
