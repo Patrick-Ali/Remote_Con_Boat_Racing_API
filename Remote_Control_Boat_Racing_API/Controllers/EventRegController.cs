@@ -84,7 +84,7 @@ namespace Remote_Control_Boat_Racing_API.Controllers
 
         // PUT api/<controller>/5
         [HttpPut("{id:length(24)}")]
-        public IActionResult Put(string id, EventReg eventsIn)
+        public IActionResult Put(string id, [FromBody] EventReg eventsIn)
         {
             try
             {
