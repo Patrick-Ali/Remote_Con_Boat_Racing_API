@@ -77,7 +77,24 @@ namespace Remote_Control_Boat_Racing_API.Services
 
         public void Update(string id, Event eventsIn)
         {
-            _event.ReplaceOne(events => events.Id == id, eventsIn);
+            List<Event> tempEvents = Get();
+            Event tempEvent = new Event();
+            foreach (Event temp in tempEvents)
+            {
+                if(temp.Id == eventsIn.Id)
+                {
+                    tempEvent.Id = eventsIn.Id;
+                    tempEvent.Location = eventsIn.Location;
+                    tempEvent.VideoURL = eventsIn.Name;
+                    tempEvent.TimeStart = eventsIn.TimeStart;
+                    tempEvent.TimeEnd = eventsIn.TimeEnd;
+                    tempEvent.Description = eventsIn.Description;
+                    tempEvent.Date = eventsIn.Date;
+                    tempEvent.Name = eventsIn.Name;
+                    tempEvent.EventFileID = temp.EventFileID;
+                }
+            }
+            _event.ReplaceOne(events => events.Id == id, tempEvent);
         }
 
         public void Remove(Event eventsIn)
