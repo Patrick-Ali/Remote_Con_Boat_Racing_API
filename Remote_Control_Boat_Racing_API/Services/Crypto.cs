@@ -10,6 +10,9 @@ using System.IO;
 
 namespace Remote_Control_Boat_Racing_API.Services
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class Crypto
     {
         // This constant is used to determine the keysize of the encryption algorithm in bits.
@@ -19,6 +22,12 @@ namespace Remote_Control_Boat_Racing_API.Services
         // This constant determines the number of iterations for the password bytes generation function.
         private const int DerivationIterations = 10000;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="plainText"></param>
+        /// <param name="passPhrase"></param>
+        /// <returns></returns>
         public static string Encrypt(string plainText, string passPhrase)
         {
             // Salt and IV is randomly generated each time, but is preprended to encrypted cipher text
@@ -56,6 +65,12 @@ namespace Remote_Control_Boat_Racing_API.Services
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="cipherText"></param>
+        /// <param name="passPhrase"></param>
+        /// <returns></returns>
         public static string Decrypt(string cipherText, string passPhrase)
         {
             // Get the complete stream of bytes that represent:
@@ -94,6 +109,7 @@ namespace Remote_Control_Boat_Racing_API.Services
             }
         }
 
+ 
         private static byte[] Generate128BitsOfRandomEntropy()
         {
             var randomBytes = new byte[16]; // 32 Bytes will give us 256 bits.
@@ -107,6 +123,11 @@ namespace Remote_Control_Boat_Racing_API.Services
 
         //Taken and altered from https://stackoverflow.com/questions/4181198/how-to-hash-a-password/10402129#10402129
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="password"></param>
+        /// <returns></returns>
         public static string HashPassword(string password)
         {
             byte[] salt;
@@ -120,6 +141,12 @@ namespace Remote_Control_Boat_Racing_API.Services
             return savedPasswordHash;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="password"></param>
+        /// <param name="storedPassword"></param>
+        /// <returns></returns>
         public static bool ConfirmPassword(string password, string storedPassword) {
             byte[] hashBytes = Convert.FromBase64String(storedPassword);
             byte[] salt = new byte[16];

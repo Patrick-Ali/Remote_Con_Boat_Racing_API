@@ -19,11 +19,21 @@ namespace Remote_Control_Boat_Racing_API.Services
             _eventReg = database.GetCollection<EventReg>("EventReg");
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public List<EventReg> Get()
         {
             return _eventReg.Find(events => true).ToList();
         }
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public EventReg Get(string id)
         {
             return _eventReg.Find<EventReg>(eventsReg => eventsReg.Id == id).FirstOrDefault();

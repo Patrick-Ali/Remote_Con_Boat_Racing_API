@@ -17,6 +17,9 @@ namespace Remote_Control_Boat_Racing_API.Models
         [BsonElement("beam")]
         public string Beam { get; set; } // 17.3 in (440mm)
 
+        [BsonElement("beamM")]
+        public string BeamM { get; set; } // in 
+
         [BsonElement("type")]
         public string Type { get; set; } //Catamaran
 
@@ -26,11 +29,17 @@ namespace Remote_Control_Boat_Racing_API.Models
         [BsonElement("hullHeight")]
         public string HullHeight { get; set; } //9.5 in (241mm)
 
+        [BsonElement("hullHeightM")]
+        public string HullHeightM { get; set; } // in 
+
         [BsonElement("hullMaterial")]
         public string HullMaterial { get; set; } //Fiberglass
 
         [BsonElement("length")]
         public string Length { get; set; } //48 in (1245mm)
+
+        [BsonElement("lengthM")]
+        public string LengthM { get; set; } // in 
 
         [BsonElement("motorSize")]
         public string MotorSize { get; set; } //6-pole 1000Kv 56×87mm
@@ -44,8 +53,14 @@ namespace Remote_Control_Boat_Racing_API.Models
         [BsonElement("scale")]
         public string Scale { get; set; }  //48-inch
 
+        [BsonElement("scaleM")]
+        public string ScaleM { get; set; }  // inch
+
         [BsonElement("speed")]
         public string Speed { get; set; } //55+ mph with 8S Li-Po
+
+        [BsonElement("speedM")]
+        public string SpeedM { get; set; } // mph 
 
         [BsonElement("speedControl")]
         public string SpeedControl { get; set; } //Dynamite 160A HV 2S-8S
@@ -58,6 +73,9 @@ namespace Remote_Control_Boat_Racing_API.Models
 
         [BsonElement("wieght")]
         public string Weight { get; set; } //12.5 lb(7.5kg)
+
+        [BsonElement("wieghtM")]
+        public string WeightM { get; set; } // lb
 
         [BsonElement("captainID")]
         public string CaptainID { get; set; }

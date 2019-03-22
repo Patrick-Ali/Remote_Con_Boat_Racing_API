@@ -8,12 +8,19 @@ using Microsoft.Extensions.Configuration;
 
 namespace Remote_Control_Boat_Racing_API.Services
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class AdminService
     {
         private readonly IMongoCollection<Admin> _admin;
         private readonly string passPhrase = "l%HJb5N^O@fl0K02H9PsxlR9algJTzK7ARBjJsd3fPG0&GwkrU";
         private readonly string passPhrase2 = "yUVyb$shjp4*%S6G!fx5t%i!fTZ@b8KQ#ymQyfhgNQ$#mKB0vA";
-
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="config"></param>
         public AdminService(IConfiguration config)
         {
             var client = new MongoClient(config.GetConnectionString("RCBR"));
@@ -21,6 +28,10 @@ namespace Remote_Control_Boat_Racing_API.Services
             _admin = database.GetCollection<Admin>("Admin");
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public List<Admin> Get()
         {
             List<Admin> hold = _admin.Find(user => true).ToList();
@@ -29,6 +40,11 @@ namespace Remote_Control_Boat_Racing_API.Services
             return final;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="admins"></param>
+        /// <returns></returns>
         public List<Admin> ChangeEnc(List<Admin> admins)
         {
             List<Admin> publicEncUsers = new List<Admin>();
@@ -49,6 +65,11 @@ namespace Remote_Control_Boat_Racing_API.Services
             return publicEncUsers;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public Admin Get(string id)
         {
             Admin tempUser = _admin.Find<Admin>(user => user.Id == id).FirstOrDefault();
@@ -60,6 +81,11 @@ namespace Remote_Control_Boat_Racing_API.Services
 
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="admin"></param>
+        /// <returns></returns>
         public Admin Create(Admin admin)
         {
             List<Admin> users = Get();
@@ -77,6 +103,11 @@ namespace Remote_Control_Boat_Racing_API.Services
             return crypto;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="admin"></param>
+        /// <returns></returns>
         public Admin CreateEnc(Admin admin)
         {
 
@@ -97,16 +128,29 @@ namespace Remote_Control_Boat_Racing_API.Services
             return crypto;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="adminIn"></param>
         public void Update(string id, Admin adminIn)
         {
             _admin.ReplaceOne(admin => admin.Id == id, adminIn);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="adminIn"></param>
         public void Remove(Admin adminIn)
         {
             _admin.DeleteOne(admin => admin.Id == adminIn.Id);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
         public void Remove(string id)
         {
             _admin.DeleteOne(admin => admin.Id == id);
