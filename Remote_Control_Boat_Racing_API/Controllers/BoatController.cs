@@ -39,8 +39,8 @@ namespace Remote_Control_Boat_Racing_API.Controllers
         /// Get all boats from the database
         /// </summary>
         /// <returns>
-        /// If successful the boats
-        /// other wise returns a 500 internal
+        /// If successful return all the boats
+        /// otherwise returns a 500 internal
         /// server error http response.
         /// </returns>
         [HttpGet]
@@ -63,11 +63,11 @@ namespace Remote_Control_Boat_Racing_API.Controllers
         /// Get a specific boat from the database. 
         /// </summary>
         /// <param name="id">
-        /// ID of the admin to get from the database
+        /// ID of the boat to get from the database.
         /// </param>
         /// <returns>
         /// If successful the specific boat
-        /// other wise returns a 500 internal
+        /// otherwise returns a 500 internal
         /// server error http response.
         /// </returns>
         // GET api/<controller>/5
@@ -102,7 +102,7 @@ namespace Remote_Control_Boat_Racing_API.Controllers
         /// </param>
         /// <returns>
         /// If successful the API address location of specific boat
-        /// other wise returns a 500 internal
+        /// otherwise returns a 500 internal
         /// server error http response.
         /// </returns>
         // POST api/<controller>
@@ -132,14 +132,14 @@ namespace Remote_Control_Boat_Racing_API.Controllers
         /// Update a boat.
         /// </summary>
         /// <param name="id">
-        /// ID of the event to be updated.
+        /// ID of the boat to be updated.
         /// </param>
         /// <param name="boatIn">
         /// Updated information.
         /// </param>
         /// <returns>
         /// If successful 204 no content http response
-        /// other wise returns a 500 internal
+        /// otherwise returns a 500 internal
         /// server error http response.
         /// </returns>
         // PUT api/<controller>/5
@@ -176,7 +176,7 @@ namespace Remote_Control_Boat_Racing_API.Controllers
         /// </param>
         /// <returns>
         /// If successful the 204 no content http response
-        /// other wise returns a 500 internal
+        /// otherwise returns a 500 internal
         /// server error http response.
         /// </returns>
         // DELETE api/<controller>/5

@@ -37,8 +37,8 @@ namespace Remote_Control_Boat_Racing_API.Controllers
         /// Get all admins from the database
         /// </summary>
         /// <returns>
-        /// If successful the admins
-        /// other wise returns a 500 internal
+        /// If successful return all the admins
+        /// otherwise returns a 500 internal
         /// server error http response.
         /// </returns>
         // GET: api/<controller>
@@ -66,8 +66,8 @@ namespace Remote_Control_Boat_Racing_API.Controllers
         /// ID of the admin to get from the database
         /// </param>
         /// <returns>
-        /// If successful the specific admin
-        /// other wise returns a 500 internal
+        /// If successful returns the specific admin
+        /// otherwise returns a 500 internal
         /// server error http response.
         /// </returns>
         // GET api/<controller>/5
@@ -102,7 +102,7 @@ namespace Remote_Control_Boat_Racing_API.Controllers
         /// </param>
         /// <returns>
         /// If successful the API address location of specific admin
-        /// other wise returns a 500 internal
+        /// otherwise returns a 500 internal
         /// server error http response.
         /// </returns>
         // POST api/<controller>

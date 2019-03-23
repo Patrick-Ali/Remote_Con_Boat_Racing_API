@@ -4,84 +4,1171 @@
         <name>Remote_Control_Boat_Racing_API</name>
     </assembly>
     <members>
-        <member name="T:Remote_Control_Boat_Racing_API.Services.AdminLoginService">
+        <member name="T:Remote_Control_Boat_Racing_API.Controllers.AdminController">
+            <summary>
+            This controller is responsible for managing requests
+            for the admin collection.
+            </summary>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Controllers.AdminController.#ctor(Remote_Control_Boat_Racing_API.Services.AdminService)">
+            <summary>
+            Initalisation action
+            </summary>
+            <param name="adminService">
+            Service class that contains the actions
+            to implement required actions
+            </param>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Controllers.AdminController.Get">
+            <summary>
+            Get all admins from the database
+            </summary>
+            <returns>
+            If successful return all the admins
+            otherwise returns a 500 internal
+            server error http response.
+            </returns>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Controllers.AdminController.Get(System.String)">
+            <summary>
+            Get a specific admin from the database. 
+            </summary>
+            <param name="id">
+            ID of the admin to get from the database
+            </param>
+            <returns>
+            If successful returns the specific admin
+            otherwise returns a 500 internal
+            server error http response.
+            </returns>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Controllers.AdminController.Post(Remote_Control_Boat_Racing_API.Models.Admin)">
+            <summary>
+            Create a new admin.
+            </summary>
+            <param name="admin">
+            Information to be added to the
+            database.
+            </param>
+            <returns>
+            If successful the API address location of specific admin
+            otherwise returns a 500 internal
+            server error http response.
+            </returns>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Controllers.AdminController.Put(System.String,Remote_Control_Boat_Racing_API.Models.Admin)">
+            <summary>
+            Update an admin.
+            </summary>
+            <param name="id">
+            ID of the admin to be updated.
+            </param>
+            <param name="adminIn">
+            Updated information.
+            </param>
+            <returns>
+            If successful 204 no content http response
+            other wise returns a 500 internal
+            server error http response.
+            </returns>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Controllers.AdminController.Delete(System.String)">
+            <summary>
+            Delete an Admin
+            </summary>
+            <param name="id">
+            ID of the specific admin
+            </param>
+            <returns>
+            If successful the 204 no content http response
+            other wise returns a 500 internal
+            server error http response.
+            </returns>
+        </member>
+        <member name="T:Remote_Control_Boat_Racing_API.Controllers.AdminLoginController">
+            <summary>
+            This controller is responsible for managing requests
+            for Admin Login services.
+            </summary>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Controllers.AdminLoginController.#ctor(Remote_Control_Boat_Racing_API.Services.AdminService,Remote_Control_Boat_Racing_API.Services.AdminLoginService)">
+            <summary>
+            Initalisation action
+            </summary>
+            <param name="adminService">
+            Service class that contains the actions
+            to get information from the admin collection.
+            </param>
+            <param name="adminLoginService">
+            Service class that contains the actions
+            needed to perfrom the Admin login actions. 
+            </param>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Controllers.AdminLoginController.Get">
+            <summary>
+            Get all admins from the database
+            </summary>
+            <returns>
+            If successful rewturn all the admins
+            other wise returns null.
+            </returns>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Controllers.AdminLoginController.Get(System.String)">
+            <summary>
+            Get a specific admin from the database. 
+            </summary>
+            <param name="id">
+            ID of the admin to get from the database
+            </param>
+            <returns>
+            If successful the specific admin
+            otherwise returns a 500 internal
+            server error http response.
+            </returns>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Controllers.AdminLoginController.Login(Remote_Control_Boat_Racing_API.Models.InLogin)">
+            <summary>
+            This action will handel admin login requests.
+            </summary>
+            <param name="login">
+            Admin login information sent for processing.
+            </param>
+            <returns>
+            If login successful it will return the location of
+            the admin in the API.
+            Otherwise it will return a 406 responce of unacceptable.
+            Worst case it returns 500 internal server error.
+            </returns>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Controllers.AdminLoginController.Post(System.String)">
+            <summary>
+            This action can be used to determin if the given 
+            email is associated with any admin.
+            </summary>
+            <param name="email">
+            The email address submited for consideration.
+            </param>
+            <returns>
+            If the email is found it will return a 202 response code
+            of acceptable to signal the email is associated with an
+            admin.
+            Otherwise it will return a 406 responce code of unacceptable.
+            Worst case it returns 500 internal server error.
+            </returns>
+        </member>
+        <member name="T:Remote_Control_Boat_Racing_API.Controllers.BoatController">
+            <summary>
+            This controller is responsible for managing requests
+            for the boat collection.
+            </summary>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Controllers.BoatController.#ctor(Remote_Control_Boat_Racing_API.Services.BoatService)">
+            <summary>
+            Initalisation action
+            </summary>
+            <param name="boatService">
+            Service class that contains the actions
+            to implement required actions
+            </param>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Controllers.BoatController.Get">
+            <summary>
+            Get all boats from the database
+            </summary>
+            <returns>
+            If successful return all the boats
+            otherwise returns a 500 internal
+            server error http response.
+            </returns>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Controllers.BoatController.Get(System.String)">
+            <summary>
+            Get a specific boat from the database. 
+            </summary>
+            <param name="id">
+            ID of the boat to get from the database.
+            </param>
+            <returns>
+            If successful the specific boat
+            otherwise returns a 500 internal
+            server error http response.
+            </returns>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Controllers.BoatController.Post(Remote_Control_Boat_Racing_API.Models.Boat)">
+            <summary>
+            Create a new boat.
+            </summary>
+            <param name="boat">
+            Information to be added to the
+            database.
+            </param>
+            <returns>
+            If successful the API address location of specific boat
+            otherwise returns a 500 internal
+            server error http response.
+            </returns>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Controllers.BoatController.Put(System.String,Remote_Control_Boat_Racing_API.Models.Boat)">
+            <summary>
+            Update a boat.
+            </summary>
+            <param name="id">
+            ID of the boat to be updated.
+            </param>
+            <param name="boatIn">
+            Updated information.
+            </param>
+            <returns>
+            If successful 204 no content http response
+            otherwise returns a 500 internal
+            server error http response.
+            </returns>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Controllers.BoatController.Delete(System.String)">
+            <summary>
+            Delete a Boat
+            </summary>
+            <param name="id">
+            ID of the specific boat
+            </param>
+            <returns>
+            If successful the 204 no content http response
+            otherwise returns a 500 internal
+            server error http response.
+            </returns>
+        </member>
+        <member name="T:Remote_Control_Boat_Racing_API.Controllers.EventController">
+            <summary>
+            This controller is responsible for managing requests
+            for the event collection.
+            </summary>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Controllers.EventController.#ctor(Remote_Control_Boat_Racing_API.Services.EventService)">
+            <summary>
+            Initalisation action
+            </summary>
+            <param name="eventService">
+            Service class that contains the actions
+            to implement required actions
+            </param>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Controllers.EventController.Get">
+            <summary>
+            Get all events from the database
+            </summary>
+            <returns>
+            If successful return all the events
+            otherwise returns a 500 internal
+            server error http response.
+            </returns>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Controllers.EventController.Get(System.String)">
+            <summary>
+            Get a specific event from the database. 
+            </summary>
+            <param name="id">
+            ID of the event to get from the database
+            </param>
+            <returns>
+            If successful return the specific event
+            otherwise returns a 500 internal
+            server error http response.
+            </returns>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Controllers.EventController.Post(Remote_Control_Boat_Racing_API.Models.EventIn)">
+            <summary>
+            Create a new event.
+            </summary>
+            <param name="events">
+            Information to be added to the
+            database.
+            </param>
+            <returns>
+            If successful returns the API address location of specific event
+            otherwise returns a 500 internal
+            server error http response.
+            </returns>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Controllers.EventController.Put(System.String,Remote_Control_Boat_Racing_API.Models.Event)">
+            <summary>
+            Update an event.
+            </summary>
+            <param name="id">
+            ID of the event to be updated.
+            </param>
+            <param name="eventsIn">
+            Updated information.
+            </param>
+            <returns>
+            If successful 204 no content http response
+            otherwise returns a 500 internal
+            server error http response.
+            </returns>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Controllers.EventController.Delete(System.String)">
+            <summary>
+            Delete an Event
+            </summary>
+            <param name="id">
+            ID of the specific event
+            </param>
+            <returns>
+            If successful the 204 no content http response
+            otherwise returns a 500 internal
+            server error http response.
+            </returns>
+        </member>
+        <member name="T:Remote_Control_Boat_Racing_API.Controllers.EventRegController">
+            <summary>
+            This controller is responsible for managing requests
+            for the event reg collection.
+            </summary>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Controllers.EventRegController.#ctor(Remote_Control_Boat_Racing_API.Services.EventRegService)">
+            <summary>
+            Initalisation action
+            </summary>
+            <param name="eventRegService">
+            Service class that contains the actions
+            to implement required actions
+            </param>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Controllers.EventRegController.Get">
+            <summary>
+            Get all event regs from the database
+            </summary>
+            <returns>
+            If successful return all the event regs
+            otherwise returns a 500 internal
+            server error http response.
+            </returns>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Controllers.EventRegController.Get(System.String)">
+            <summary>
+            Get a specific event reg from the database. 
+            </summary>
+            <param name="id">
+            ID of the event reg to get from the database
+            </param>
+            <returns>
+            If successful the specific event reg
+            otherwise returns a 500 internal
+            server error http response.
+            </returns>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Controllers.EventRegController.Post(Remote_Control_Boat_Racing_API.Models.EventReg)">
+            <summary>
+            Create a new event reg.
+            </summary>
+            <param name="eventsReg">
+            Information to be added to the
+            database.
+            </param>
+            <returns>
+            If successful the API address location of specific event reg
+            otherwise returns a 500 internal
+            server error http response.
+            </returns>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Controllers.EventRegController.Put(System.String,Remote_Control_Boat_Racing_API.Models.EventReg)">
+            <summary>
+            Update an event reg.
+            </summary>
+            <param name="id">
+            ID of the event reg to be updated.
+            </param>
+            <param name="eventsIn">
+            Updated information.
+            </param>
+            <returns>
+            If successful 204 no content http response
+            otherwise returns a 500 internal
+            server error http response.
+            </returns>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Controllers.EventRegController.Delete(System.String)">
+            <summary>
+            Delete an EventReg
+            </summary>
+            <param name="id">
+            ID of the specific event reg
+            </param>
+            <returns>
+            If successful the 204 no content http response
+            otherwise returns a 500 internal
+            server error http response.
+            </returns>
+        </member>
+        <member name="T:Remote_Control_Boat_Racing_API.Controllers.LoginController">
+            <summary>
+            This controller is responsible for managing requests
+            for User Login services.
+            </summary>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Controllers.LoginController.#ctor(Remote_Control_Boat_Racing_API.Services.UserService,Remote_Control_Boat_Racing_API.Services.LoginService)">
+            <summary>
+            Initalisation action
+            </summary>
+            <param name="userService">
+            Service class that contains the actions
+            to get information from the user collection.
+            </param>
+            <param name="loginService">
+            Service class that contains the actions
+            needed to perfrom the user login actions. 
+            </param>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Controllers.LoginController.Get">
+            <summary>
+            Get all users from the database
+            </summary>
+            <returns>
+            If successful rewturn all the users
+            </returns>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Controllers.LoginController.Get(System.String)">
+            <summary>
+            Get a specific user from the database. 
+            </summary>
+            <param name="id">
+            ID of the user to get from the database
+            </param>
+            <returns>
+            If successful the specific user
+            otherwise returns a 500 internal
+            server error http response.
+            </returns>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Controllers.LoginController.Login(Remote_Control_Boat_Racing_API.Models.InLogin)">
+            <summary>
+            This action will handel user login requests.
+            </summary>
+            <param name="login">
+            Admin login information sent for processing.
+            </param>
+            <returns>
+            If login successful it will return the location of
+            the user in the API.
+            Otherwise it will return a 406 responce of unacceptable.
+            Worst case it returns 500 internal server error.
+            </returns>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Controllers.LoginController.Post(System.String)">
+            <summary>
+            This action can be used to determin if the given 
+            email is associated with any user.
+            </summary>
+            <param name="email"></param>
+            <returns>
+            If the email is found it will return a 202 response code
+            of acceptable to signal the email is associated with a
+            user.
+            Otherwise it will return a 406 responce code of unacceptable.
+            Worst case it returns 500 internal server error.
+            </returns>
+        </member>
+        <member name="T:Remote_Control_Boat_Racing_API.Controllers.TeamController">
+            <summary>
+            This controller is responsible for managing requests
+            for the team collection.
+            </summary>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Controllers.TeamController.#ctor(Remote_Control_Boat_Racing_API.Services.TeamService)">
+            <summary>
+            Initalisation action
+            </summary>
+            <param name="teamService">
+            Service class that contains the actions
+            to implement required actions
+            </param>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Controllers.TeamController.Get">
+            <summary>
+            Get all teams from the database
+            </summary>
+            <returns>
+            If successful return all the teams
+            otherwise returns a 500 internal
+            server error http response.
+            </returns>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Controllers.TeamController.Get(System.String)">
+            <summary>
+            Get a specific team from the database. 
+            </summary>
+            <param name="id">
+            ID of the team to get from the database.
+            </param>
+            <returns>
+            If successful the specific team
+            otherwise returns a 500 internal
+            server error http response.
+            </returns>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Controllers.TeamController.Post(Remote_Control_Boat_Racing_API.Models.Team)">
+            <summary>
+            Create a new team.
+            </summary>
+            <param name="teams">
+            Information to be added to the
+            database.
+            </param>
+            <returns>
+            If successful the API address location of specific team
+            otherwise returns a 500 internal
+            server error http response.
+            </returns>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Controllers.TeamController.Put(System.String,Remote_Control_Boat_Racing_API.Models.Team)">
+            <summary>
+            Update a team.
+            </summary>
+            <param name="id">
+            ID of the team to be updated.
+            </param>
+            <param name="teamsIn">
+            Updated information.
+            </param>
+            <returns>
+            If successful 204 no content http response
+            otherwise returns a 500 internal
+            server error http response.
+            </returns>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Controllers.TeamController.Delete(System.String)">
+            <summary>
+            Delete a team
+            </summary>
+            <param name="id">
+            ID of the specific team
+            </param>
+            <returns>
+            If successful the 204 no content http response
+            otherwise returns a 500 internal
+            server error http response.
+            </returns>
+        </member>
+        <member name="T:Remote_Control_Boat_Racing_API.Controllers.UserController">
+            <summary>
+            This controller is responsible for managing requests
+            for the user collection.
+            </summary>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Controllers.UserController.#ctor(Remote_Control_Boat_Racing_API.Services.UserService)">
+            <summary>
+            Initalisation action
+            </summary>
+            <param name="userService">
+            Service class that contains the actions
+            to implement required actions
+            </param>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Controllers.UserController.Get">
+            <summary>
+            Get all users from the database
+            </summary>
+            <returns>
+            If successful return all the users
+            otherwise returns a 500 internal
+            server error http response.
+            </returns>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Controllers.UserController.Get(System.String)">
+            <summary>
+            Get a specific user from the database. 
+            </summary>
+            <param name="id">
+            ID of the user to get from the database.
+            </param>
+            <returns>
+            If successful returns the specific user
+            otherwise returns a 500 internal
+            server error http response.
+            </returns>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Controllers.UserController.Post(Remote_Control_Boat_Racing_API.Models.User)">
+            <summary>
+            Create a new user.
+            </summary>
+            <param name="user">
+            Information to be added to the
+            database.
+            </param>
+            <returns>
+            If successful returns the API address location of specific user
+            otherwise returns a 500 internal
+            server error http response.
+            </returns>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Controllers.UserController.Put(System.String,Remote_Control_Boat_Racing_API.Models.User)">
+            <summary>
+            Update a user.
+            </summary>
+            <param name="id">
+            ID of the user to be updated.
+            </param>
+            <param name="userIn">
+            Updated information.
+            </param>
+            <returns>
+            If successful 204 no content http response
+            otherwise returns a 500 internal
+            server error http response.
+            </returns>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Controllers.UserController.Delete(System.String)">
+            <summary>
+            Delete a user
+            </summary>
+            <param name="id">
+            ID of the specific user
+            </param>
+            <returns>
+            If successful the 204 no content http response
+            otherwise returns a 500 internal
+            server error http response.
+            </returns>
+        </member>
+        <member name="T:Remote_Control_Boat_Racing_API.Models.Admin">
             <summary>
             
+            </summary>
+        </member>
+        <member name="F:Remote_Control_Boat_Racing_API.Models.Admin.Id">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Remote_Control_Boat_Racing_API.Models.Admin.Email">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Remote_Control_Boat_Racing_API.Models.Admin.Password">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Remote_Control_Boat_Racing_API.Models.AdminIn">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Remote_Control_Boat_Racing_API.Models.AdminIn.Email">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Remote_Control_Boat_Racing_API.Models.AdminIn.Password">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Remote_Control_Boat_Racing_API.Models.Boat">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Remote_Control_Boat_Racing_API.Models.Boat.Id">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Remote_Control_Boat_Racing_API.Models.Boat.Beam">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Remote_Control_Boat_Racing_API.Models.Boat.BeamM">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Remote_Control_Boat_Racing_API.Models.Boat.Type">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Remote_Control_Boat_Racing_API.Models.Boat.DriveSystem">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Remote_Control_Boat_Racing_API.Models.Boat.HullHeight">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Remote_Control_Boat_Racing_API.Models.Boat.HullHeightM">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Remote_Control_Boat_Racing_API.Models.Boat.HullMaterial">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Remote_Control_Boat_Racing_API.Models.Boat.Length">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Remote_Control_Boat_Racing_API.Models.Boat.LengthM">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Remote_Control_Boat_Racing_API.Models.Boat.MotorSize">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Remote_Control_Boat_Racing_API.Models.Boat.PropellerSize">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Remote_Control_Boat_Racing_API.Models.Boat.Radio">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Remote_Control_Boat_Racing_API.Models.Boat.Scale">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Remote_Control_Boat_Racing_API.Models.Boat.ScaleM">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Remote_Control_Boat_Racing_API.Models.Boat.Speed">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Remote_Control_Boat_Racing_API.Models.Boat.SpeedM">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Remote_Control_Boat_Racing_API.Models.Boat.SpeedControl">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Remote_Control_Boat_Racing_API.Models.Boat.Steering">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Remote_Control_Boat_Racing_API.Models.Boat.Coluors">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Remote_Control_Boat_Racing_API.Models.Boat.Weight">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Remote_Control_Boat_Racing_API.Models.Boat.WeightM">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Remote_Control_Boat_Racing_API.Models.Boat.CaptainID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Remote_Control_Boat_Racing_API.Models.Event">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Remote_Control_Boat_Racing_API.Models.Event.Id">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Remote_Control_Boat_Racing_API.Models.Event.VideoURL">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Remote_Control_Boat_Racing_API.Models.Event.EventFileID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Remote_Control_Boat_Racing_API.Models.Event.Name">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Remote_Control_Boat_Racing_API.Models.Event.Date">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Remote_Control_Boat_Racing_API.Models.Event.Location">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Remote_Control_Boat_Racing_API.Models.Event.TimeStart">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Remote_Control_Boat_Racing_API.Models.Event.TimeEnd">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Remote_Control_Boat_Racing_API.Models.Event.Description">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Remote_Control_Boat_Racing_API.Models.EventIn">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Remote_Control_Boat_Racing_API.Models.EventIn.Id">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Remote_Control_Boat_Racing_API.Models.EventIn.VideoURL">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Remote_Control_Boat_Racing_API.Models.EventIn.EventFile">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Remote_Control_Boat_Racing_API.Models.EventIn.Name">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Remote_Control_Boat_Racing_API.Models.EventIn.Date">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Remote_Control_Boat_Racing_API.Models.EventIn.Location">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Remote_Control_Boat_Racing_API.Models.EventIn.TimeStart">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Remote_Control_Boat_Racing_API.Models.EventIn.TimeEnd">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Remote_Control_Boat_Racing_API.Models.EventIn.Description">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Remote_Control_Boat_Racing_API.Models.EventReg">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Remote_Control_Boat_Racing_API.Models.EventReg.Id">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Remote_Control_Boat_Racing_API.Models.EventReg.EventID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Remote_Control_Boat_Racing_API.Models.EventReg.TeamID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Remote_Control_Boat_Racing_API.Models.InLogin">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Remote_Control_Boat_Racing_API.Models.InLogin.Email">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Remote_Control_Boat_Racing_API.Models.InLogin.Password">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Remote_Control_Boat_Racing_API.Models.Login">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Remote_Control_Boat_Racing_API.Models.Login.Id">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Remote_Control_Boat_Racing_API.Models.Login.Email">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Remote_Control_Boat_Racing_API.Models.Team">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Remote_Control_Boat_Racing_API.Models.Team.Id">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Remote_Control_Boat_Racing_API.Models.Team.CaptainID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Remote_Control_Boat_Racing_API.Models.Team.PitID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Remote_Control_Boat_Racing_API.Models.Team.Recruiting">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Remote_Control_Boat_Racing_API.Models.User">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Remote_Control_Boat_Racing_API.Models.User.Id">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Remote_Control_Boat_Racing_API.Models.User.FirstName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Remote_Control_Boat_Racing_API.Models.User.LastName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Remote_Control_Boat_Racing_API.Models.User.DOB">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Remote_Control_Boat_Racing_API.Models.User.Points">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Remote_Control_Boat_Racing_API.Models.User.Posistion">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Remote_Control_Boat_Racing_API.Models.User.Address">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Remote_Control_Boat_Racing_API.Models.User.PostCode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Remote_Control_Boat_Racing_API.Models.User.City">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Remote_Control_Boat_Racing_API.Models.User.Email">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Remote_Control_Boat_Racing_API.Models.User.Password">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Remote_Control_Boat_Racing_API.Models.User.PhoneNumber">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Remote_Control_Boat_Racing_API.Models.User.MobilePhoneNumber">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Remote_Control_Boat_Racing_API.Models.User.Team">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Remote_Control_Boat_Racing_API.Services.AdminLoginService">
+            <summary>
+            This controller is responsible for processing data
+            for Admin Login services.
             </summary>
         </member>
         <member name="M:Remote_Control_Boat_Racing_API.Services.AdminLoginService.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
             <summary>
-            
+            Initalisation action
             </summary>
+            <param name="config">
+            Configuratuion for the database.
+            </param>
         </member>
         <member name="M:Remote_Control_Boat_Racing_API.Services.AdminLoginService.Login(System.String,System.String,System.Collections.Generic.List{Remote_Control_Boat_Racing_API.Models.Admin})">
             <summary>
-            
+            This action handels verifying the submited
+            email and password belong to an Admin.
             </summary>
-            <param name="email"></param>
-            <param name="password"></param>
-            <param name="admins"></param>
-            <returns></returns>
+            <param name="email">
+            Submited email for consideration.
+            </param>
+            <param name="password">
+            submited password for consideration.
+            </param>
+            <param name="admins">
+            List of admins from the API to compare
+            the email and password against.
+            </param>
+            <returns>
+            If successful returns the admin's login details
+            otherwise it returns null.
+            </returns>
         </member>
         <member name="M:Remote_Control_Boat_Racing_API.Services.AdminLoginService.Check(System.String,System.Collections.Generic.List{Remote_Control_Boat_Racing_API.Models.Admin})">
             <summary>
-            
+            This action can be used to determin if the given 
+            email is associated with any admin.
             </summary>
-            <param name="email"></param>
-            <param name="users"></param>
-            <returns></returns>
+            <param name="email">
+            The email address submited for consideration.
+            </param>
+            <param name="users">
+            List of admins from the API to compare
+            the email and password against. 
+            </param>
+            <returns>
+            If email is associated with an Admin it returns
+            true.
+            Otherwise it returns false.
+            </returns>
         </member>
         <member name="T:Remote_Control_Boat_Racing_API.Services.AdminService">
             <summary>
-            
+            This controller is responsible for processing data
+            for the admin collection.
             </summary>
         </member>
         <member name="M:Remote_Control_Boat_Racing_API.Services.AdminService.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
             <summary>
-            
+            Initalisation action
             </summary>
-            <param name="config"></param>
+            <param name="config">
+            Configuratuion for the database.
+            </param>
         </member>
         <member name="M:Remote_Control_Boat_Racing_API.Services.AdminService.Get">
             <summary>
-            
+            Get all admins from the database
             </summary>
-            <returns></returns>
+            <returns>
+            If successful return all the admins.
+            </returns>
         </member>
         <member name="M:Remote_Control_Boat_Racing_API.Services.AdminService.ChangeEnc(System.Collections.Generic.List{Remote_Control_Boat_Racing_API.Models.Admin})">
             <summary>
-            
+            This function changes the encryption
+            from the backend passphrase to the
+            front ends passphrase.
             </summary>
-            <param name="admins"></param>
-            <returns></returns>
+            <param name="admins">
+            List of admins to change the encryption
+            of.
+            </param>
+            <returns>
+            Returns a list of admins with their encryption
+            changed.
+            </returns>
         </member>
         <member name="M:Remote_Control_Boat_Racing_API.Services.AdminService.Get(System.String)">
             <summary>
-            
+            Get a specific admin from the database. 
             </summary>
-            <param name="id"></param>
-            <returns></returns>
+            <param name="id">
+            ID of the admin to get from the database
+            </param>
+            <returns>
+            If successful returns the specific admin.
+            </returns>
         </member>
         <member name="M:Remote_Control_Boat_Racing_API.Services.AdminService.Create(Remote_Control_Boat_Racing_API.Models.Admin)">
             <summary>
-            
+            Create a new admin.
             </summary>
-            <param name="admin"></param>
-            <returns></returns>
+            <param name="admin">
+            Information to be added to the
+            database.
+            </param>
+            <returns>
+            If successful returns the created admin
+            otherwise returns null.
+            </returns>
         </member>
         <member name="M:Remote_Control_Boat_Racing_API.Services.AdminService.CreateEnc(Remote_Control_Boat_Racing_API.Models.Admin)">
             <summary>
-            
+            Encrypts a given admin with the
+            API's passphrase.
             </summary>
-            <param name="admin"></param>
-            <returns></returns>
+            <param name="admin">
+            Admin to be encrypted.
+            </param>
+            <returns>
+            If successful returns the encrypted admin.
+            </returns>
         </member>
         <member name="M:Remote_Control_Boat_Racing_API.Services.AdminService.Update(System.String,Remote_Control_Boat_Racing_API.Models.Admin)">
             <summary>
-            
+            Update an admin.
             </summary>
-            <param name="id"></param>
-            <param name="adminIn"></param>
+            <param name="id">
+            ID of the admin to be updated.
+            </param>
+            <param name="adminIn">
+            Updated information.
+            </param>
         </member>
         <member name="M:Remote_Control_Boat_Racing_API.Services.AdminService.Remove(Remote_Control_Boat_Racing_API.Models.Admin)">
             <summary>
@@ -91,9 +1178,11 @@
         </member>
         <member name="M:Remote_Control_Boat_Racing_API.Services.AdminService.Remove(System.String)">
             <summary>
-            
+            Delete an Admin
             </summary>
-            <param name="id"></param>
+            <param name="id">
+            ID of the specific admin
+            </param>
         </member>
         <member name="T:Remote_Control_Boat_Racing_API.Services.BoatService">
             <summary>
@@ -147,39 +1236,68 @@
         </member>
         <member name="T:Remote_Control_Boat_Racing_API.Services.Crypto">
             <summary>
-            
+            This class handels performing encryption and
+            decryption operations for the Front End
             </summary>
         </member>
         <member name="M:Remote_Control_Boat_Racing_API.Services.Crypto.Encrypt(System.String,System.String)">
             <summary>
-            
+            This action performs the encryption operation on
+            the data being passed to it.
             </summary>
-            <param name="plainText"></param>
-            <param name="passPhrase"></param>
-            <returns></returns>
+            <param name="plainText">
+            The data being passed to be encrypted.
+            </param>
+            <param name="passPhrase">
+            The key that will be used to encrypt the data
+            </param>
+            <returns>
+            It returns an encrypted string of the data passed in.
+            </returns>
         </member>
         <member name="M:Remote_Control_Boat_Racing_API.Services.Crypto.Decrypt(System.String,System.String)">
             <summary>
-            
+            This acrtion handels the decryption of a piece of 
+            data.
             </summary>
-            <param name="cipherText"></param>
-            <param name="passPhrase"></param>
-            <returns></returns>
+            <param name="cipherText">
+            The encrypted data to be decrypted
+            </param>
+            <param name="passPhrase">
+            The key that will decrypt the data.
+            </param>
+            <returns>
+            A decrypted version of the data passed in.
+            </returns>
         </member>
         <member name="M:Remote_Control_Boat_Racing_API.Services.Crypto.HashPassword(System.String)">
             <summary>
-            
+            This action hashes using SHA512 a given string of text.
             </summary>
-            <param name="password"></param>
-            <returns></returns>
+            <param name="password">
+            The password to hash.
+            </param>
+            <returns>
+            A hashed version of the given text string.
+            </returns>
         </member>
         <member name="M:Remote_Control_Boat_Racing_API.Services.Crypto.ConfirmPassword(System.String,System.String)">
             <summary>
-            
+            This action compares two hashed strings to
+            see if they match.
             </summary>
-            <param name="password"></param>
-            <param name="storedPassword"></param>
-            <returns></returns>
+            <param name="password">
+            The password submited to be compared against a
+            password from the database.
+            </param>
+            <param name="storedPassword">
+            The password from the database to be compared
+            against the submited password.
+            </param>
+            <returns>
+            Returns true if the strings match otherwise
+            it returns false if the strings do not match.
+            </returns>
         </member>
         <member name="M:Remote_Control_Boat_Racing_API.Services.EventRegService.Get">
             <summary>
@@ -193,6 +1311,145 @@
             </summary>
             <param name="id"></param>
             <returns></returns>
+        </member>
+        <member name="T:Remote_Control_Boat_Racing_API.Services.EventService">
+            <summary>
+            This class is responsible for processing data
+            for the event collection.
+            </summary>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Services.EventService.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Initalisation action
+            </summary>
+            <param name="config">
+            Configuratuion for the database.
+            </param>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Services.EventService.UploadFile(System.Byte[],System.String,System.String)">
+            <summary>
+            Uploads a file to the database.
+            </summary>
+            <param name="stream">
+            The file in byte format to be stored.
+            </param>
+            <param name="location">
+            Part of the filename, the events location.
+            </param>
+            <param name="date">
+            Part of the filename, the events date.
+            </param>
+            <returns>
+            Returns the file in byte format.
+            </returns>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Services.EventService.Get">
+            <summary>
+            Get all events from the database
+            </summary>
+            <returns>
+            If successful return all the events
+            </returns>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Services.EventService.Get(System.String)">
+            <summary>
+            Get a specific event from the database. 
+            </summary>
+            <param name="id">
+            ID of the event to get from the database
+            </param>
+            <returns>
+            If successful return the specific event
+            </returns>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Services.EventService.Create(Remote_Control_Boat_Racing_API.Models.EventIn)">
+            <summary>
+            Create a new event.
+            </summary>
+            <param name="events">
+            Information to be added to the
+            database.
+            </param>
+            <returns>
+            If successful returns the created event
+            </returns>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Services.EventService.Update(System.String,Remote_Control_Boat_Racing_API.Models.Event)">
+            <summary>
+            Update an event.
+            </summary>
+            <param name="id">
+            ID of the event to be updated.
+            </param>
+            <param name="eventsIn">
+            Updated information.
+            </param>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Services.EventService.Remove(Remote_Control_Boat_Racing_API.Models.Event)">
+            <summary>
+            
+            </summary>
+            <param name="eventsIn"></param>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Services.EventService.Remove(System.String)">
+            <summary>
+            Delete an Event
+            </summary>
+            <param name="id">
+            ID of the specific event
+            </param>
+        </member>
+        <member name="T:Remote_Control_Boat_Racing_API.Services.LoginService">
+            <summary>
+            This controller is responsible for processing data
+            for User Login services.
+            </summary>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Services.LoginService.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Initalisation action
+            </summary>
+            <param name="config">
+            Configuratuion for the database.
+            </param>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Services.LoginService.Login(System.String,System.String,System.Collections.Generic.List{Remote_Control_Boat_Racing_API.Models.User})">
+            <summary>
+            This action handels verifying the submited
+            email and password belong to a User.
+            </summary>
+            <param name="email">
+            Submited email for consideration.
+            </param>
+            <param name="password">
+            submited password for consideration.
+            </param>
+            <param name="users">
+            List of users from the API to compare
+            the email and password against.
+            </param>
+            <returns>
+            If successful returns the user's login details
+            otherwise it returns null.
+            </returns>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Services.LoginService.Check(System.String,System.Collections.Generic.List{Remote_Control_Boat_Racing_API.Models.User})">
+            <summary>
+            This action can be used to determin if the given 
+            email is associated with any user.
+            </summary>
+            <param name="email">
+            The email address submited for consideration.
+            </param>
+            <param name="users">
+            List of users from the API to compare
+            the email and password against. 
+            </param>
+            <returns>
+            If email is associated with a user it returns
+            true.
+            Otherwise it returns false.
+            </returns>
         </member>
         <member name="T:Remote_Control_Boat_Racing_API.Services.TeamService">
             <summary>
@@ -224,6 +1481,148 @@
             </summary>
             <param name="teams"></param>
             <returns></returns>
+        </member>
+        <member name="T:Remote_Control_Boat_Racing_API.Services.UserService">
+            <summary>
+            This controller is responsible for processing data
+            for the user collection.
+            </summary>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Services.UserService.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Initalisation action
+            </summary>
+            <param name="config">
+            Configuratuion for the database.
+            </param>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Services.UserService.Get">
+            <summary>
+            Get all users from the database
+            </summary>
+            <returns>
+            If successful return all the users.
+            </returns>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Services.UserService.ChangeEnc(System.Collections.Generic.List{Remote_Control_Boat_Racing_API.Models.User})">
+            <summary>
+            This function changes the encryption
+            from the backend passphrase to the
+            front ends passphrase.
+            </summary>
+            <param name="users">
+            List of users to change the encryption
+            of.
+            </param>
+            <returns>
+            Returns a list of users with their encryption
+            changed.
+            </returns>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Services.UserService.Get(System.String)">
+            <summary>
+            Get a specific user from the database. 
+            </summary>
+            <param name="id">
+            ID of the user to get from the database.
+            </param>
+            <returns>
+            If successful returns the specific user.
+            </returns>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Services.UserService.Create(Remote_Control_Boat_Racing_API.Models.User)">
+            <summary>
+            Create a new user.
+            </summary>
+            <param name="user">
+            Information to be added to the
+            database.
+            </param>
+            <returns>
+            If successful returns the created
+            user.
+            </returns>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Services.UserService.CreateEnc(Remote_Control_Boat_Racing_API.Models.User,System.Boolean)">
+            <summary>
+            Encrypts a given user with the
+            API's passphrase.
+            </summary>
+            <param name="user">
+            Admin to be encrypted.
+            </param>
+            <param name="update">
+            Determine if the password needs to be encrypted.
+            </param>
+            <returns>
+            If successful returns the encrypted user.
+            </returns>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Services.UserService.Update(System.String,Remote_Control_Boat_Racing_API.Models.User)">
+            <summary>
+            Update a user.
+            </summary>
+            <param name="id">
+            ID of the user to be updated.
+            </param>
+            <param name="userIn">
+            Updated information.
+            </param>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Services.UserService.Remove(Remote_Control_Boat_Racing_API.Models.User)">
+            <summary>
+            
+            </summary>
+            <param name="userIn"></param>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Services.UserService.Remove(System.String)">
+            <summary>
+            Delete a user
+            </summary>
+            <param name="id">
+            ID of the specific user
+            </param>
+            <returns>
+            If successful the 204 no content http response
+            otherwise returns a 500 internal
+            server error http response.
+            </returns>
+        </member>
+        <member name="T:WebApplication3.Program">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:WebApplication3.Program.Main(System.String[])">
+            <summary>
+            
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="M:WebApplication3.Program.CreateWebHostBuilder(System.String[])">
+            <summary>
+            
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="T:WebApplication3.Startup">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:WebApplication3.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:WebApplication3.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IHostingEnvironment)">
+            <summary>
+            
+            </summary>
+            <param name="app"></param>
+            <param name="env"></param>
         </member>
     </members>
 </doc>

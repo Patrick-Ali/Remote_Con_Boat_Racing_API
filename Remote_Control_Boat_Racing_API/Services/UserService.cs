@@ -8,12 +8,22 @@ using Microsoft.Extensions.Configuration;
 
 namespace Remote_Control_Boat_Racing_API.Services
 {
+    /// <summary>
+    /// This controller is responsible for processing data
+    /// for the user collection.
+    /// </summary>
     public class UserService
     {
         private readonly IMongoCollection<User> _user;
         private readonly string passPhrase = "l%HJb5N^O@fl0K02H9PsxlR9algJTzK7ARBjJsd3fPG0&GwkrU";
         private readonly string passPhrase2 = "yUVyb$shjp4*%S6G!fx5t%i!fTZ@b8KQ#ymQyfhgNQ$#mKB0vA";
 
+        /// <summary>
+        /// Initalisation action
+        /// </summary>
+        /// <param name="config">
+        /// Configuratuion for the database.
+        /// </param>
         public UserService(IConfiguration config)
         {
             var client = new MongoClient(config.GetConnectionString("RCBR"));
@@ -21,6 +31,13 @@ namespace Remote_Control_Boat_Racing_API.Services
             _user = database.GetCollection<User>("User");
         }
 
+        // GET: api/<controller>
+        /// <summary>
+        /// Get all users from the database
+        /// </summary>
+        /// <returns>
+        /// If successful return all the users.
+        /// </returns>
         public List<User> Get()
         {
             List<User> hold = _user.Find(user => true).ToList();
@@ -29,6 +46,19 @@ namespace Remote_Control_Boat_Racing_API.Services
             return final;
         }
 
+        /// <summary>
+        /// This function changes the encryption
+        /// from the backend passphrase to the
+        /// front ends passphrase.
+        /// </summary>
+        /// <param name="users">
+        /// List of users to change the encryption
+        /// of.
+        /// </param>
+        /// <returns>
+        /// Returns a list of users with their encryption
+        /// changed.
+        /// </returns>
         public List<User> ChangeEnc(List<User> users) {
             List<User> publicEncUsers = new List<User>();
 
@@ -72,6 +102,15 @@ namespace Remote_Control_Boat_Racing_API.Services
             return publicEncUsers;
         }
 
+        /// <summary>
+        /// Get a specific user from the database. 
+        /// </summary>
+        /// <param name="id">
+        /// ID of the user to get from the database.
+        /// </param>
+        /// <returns>
+        /// If successful returns the specific user.
+        /// </returns>
         public User Get(string id)
         {
             User tempUser = _user.Find<User>(user => user.Id == id).FirstOrDefault();
@@ -83,6 +122,18 @@ namespace Remote_Control_Boat_Racing_API.Services
             //return _user.Find<User>(user => user.Id == id).FirstOrDefault();
         }
 
+        // POST api/<controller>
+        /// <summary>
+        /// Create a new user.
+        /// </summary>
+        /// <param name="user">
+        /// Information to be added to the
+        /// database.
+        /// </param>
+        /// <returns>
+        /// If successful returns the created
+        /// user.
+        /// </returns>
         public User Create(User user)
         {
             List<User> users = Get();
@@ -100,6 +151,19 @@ namespace Remote_Control_Boat_Racing_API.Services
             return crypto;
         }
 
+        /// <summary>
+        /// Encrypts a given user with the
+        /// API's passphrase.
+        /// </summary>
+        /// <param name="user">
+        /// Admin to be encrypted.
+        /// </param>
+        /// <param name="update">
+        /// Determine if the password needs to be encrypted.
+        /// </param>
+        /// <returns>
+        /// If successful returns the encrypted user.
+        /// </returns>
         public User CreateEnc(User user, Boolean update)
         {
 
@@ -142,6 +206,16 @@ namespace Remote_Control_Boat_Racing_API.Services
             return crypto;
         }
 
+        // PUT api/<controller>/5
+        /// <summary>
+        /// Update a user.
+        /// </summary>
+        /// <param name="id">
+        /// ID of the user to be updated.
+        /// </param>
+        /// <param name="userIn">
+        /// Updated information.
+        /// </param>
         public void Update(string id, User userIn)
         {
             User crypto = CreateEnc(userIn, true);
@@ -149,11 +223,26 @@ namespace Remote_Control_Boat_Racing_API.Services
             _user.ReplaceOne(user => user.Id == id, crypto);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="userIn"></param>
         public void Remove(User userIn)
         {
             _user.DeleteOne(user => user.Id == userIn.Id);
         }
 
+        /// <summary>
+        /// Delete a user
+        /// </summary>
+        /// <param name="id">
+        /// ID of the specific user
+        /// </param>
+        /// <returns>
+        /// If successful the 204 no content http response
+        /// otherwise returns a 500 internal
+        /// server error http response.
+        /// </returns>
         public void Remove(string id)
         {
             _user.DeleteOne(user => user.Id == id);

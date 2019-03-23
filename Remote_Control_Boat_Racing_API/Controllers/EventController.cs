@@ -39,8 +39,8 @@ namespace Remote_Control_Boat_Racing_API.Controllers
         /// Get all events from the database
         /// </summary>
         /// <returns>
-        /// If successful the events
-        /// other wise returns a 500 internal
+        /// If successful return all the events
+        /// otherwise returns a 500 internal
         /// server error http response.
         /// </returns>
         [HttpGet]
@@ -66,8 +66,8 @@ namespace Remote_Control_Boat_Racing_API.Controllers
         /// ID of the event to get from the database
         /// </param>
         /// <returns>
-        /// If successful the specific event
-        /// other wise returns a 500 internal
+        /// If successful return the specific event
+        /// otherwise returns a 500 internal
         /// server error http response.
         /// </returns>
         // GET api/<controller>/5
@@ -101,8 +101,8 @@ namespace Remote_Control_Boat_Racing_API.Controllers
         /// database.
         /// </param>
         /// <returns>
-        /// If successful the API address location of specific event
-        /// other wise returns a 500 internal
+        /// If successful returns the API address location of specific event
+        /// otherwise returns a 500 internal
         /// server error http response.
         /// </returns>
         // POST api/<controller>
@@ -135,7 +135,7 @@ namespace Remote_Control_Boat_Racing_API.Controllers
         /// </param>
         /// <returns>
         /// If successful 204 no content http response
-        /// other wise returns a 500 internal
+        /// otherwise returns a 500 internal
         /// server error http response.
         /// </returns>
         // PUT api/<controller>/5
@@ -172,7 +172,7 @@ namespace Remote_Control_Boat_Racing_API.Controllers
         /// </param>
         /// <returns>
         /// If successful the 204 no content http response
-        /// other wise returns a 500 internal
+        /// otherwise returns a 500 internal
         /// server error http response.
         /// </returns>
         // DELETE api/<controller>/5

@@ -9,18 +9,21 @@ using Microsoft.Extensions.Configuration;
 namespace Remote_Control_Boat_Racing_API.Services
 {
     /// <summary>
-    /// 
+    /// This controller is responsible for processing data
+    /// for the admin collection.
     /// </summary>
     public class AdminService
     {
         private readonly IMongoCollection<Admin> _admin;
         private readonly string passPhrase = "l%HJb5N^O@fl0K02H9PsxlR9algJTzK7ARBjJsd3fPG0&GwkrU";
         private readonly string passPhrase2 = "yUVyb$shjp4*%S6G!fx5t%i!fTZ@b8KQ#ymQyfhgNQ$#mKB0vA";
-        
+
         /// <summary>
-        /// 
+        /// Initalisation action
         /// </summary>
-        /// <param name="config"></param>
+        /// <param name="config">
+        /// Configuratuion for the database.
+        /// </param>
         public AdminService(IConfiguration config)
         {
             var client = new MongoClient(config.GetConnectionString("RCBR"));
@@ -29,9 +32,11 @@ namespace Remote_Control_Boat_Racing_API.Services
         }
 
         /// <summary>
-        /// 
+        /// Get all admins from the database
         /// </summary>
-        /// <returns></returns>
+        /// <returns>
+        /// If successful return all the admins.
+        /// </returns>
         public List<Admin> Get()
         {
             List<Admin> hold = _admin.Find(user => true).ToList();
@@ -41,10 +46,18 @@ namespace Remote_Control_Boat_Racing_API.Services
         }
 
         /// <summary>
-        /// 
+        /// This function changes the encryption
+        /// from the backend passphrase to the
+        /// front ends passphrase.
         /// </summary>
-        /// <param name="admins"></param>
-        /// <returns></returns>
+        /// <param name="admins">
+        /// List of admins to change the encryption
+        /// of.
+        /// </param>
+        /// <returns>
+        /// Returns a list of admins with their encryption
+        /// changed.
+        /// </returns>
         public List<Admin> ChangeEnc(List<Admin> admins)
         {
             List<Admin> publicEncUsers = new List<Admin>();
@@ -66,10 +79,14 @@ namespace Remote_Control_Boat_Racing_API.Services
         }
 
         /// <summary>
-        /// 
+        /// Get a specific admin from the database. 
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
+        /// <param name="id">
+        /// ID of the admin to get from the database
+        /// </param>
+        /// <returns>
+        /// If successful returns the specific admin.
+        /// </returns>
         public Admin Get(string id)
         {
             Admin tempUser = _admin.Find<Admin>(user => user.Id == id).FirstOrDefault();
@@ -82,10 +99,16 @@ namespace Remote_Control_Boat_Racing_API.Services
         }
 
         /// <summary>
-        /// 
+        /// Create a new admin.
         /// </summary>
-        /// <param name="admin"></param>
-        /// <returns></returns>
+        /// <param name="admin">
+        /// Information to be added to the
+        /// database.
+        /// </param>
+        /// <returns>
+        /// If successful returns the created admin
+        /// otherwise returns null.
+        /// </returns>
         public Admin Create(Admin admin)
         {
             List<Admin> users = Get();
@@ -104,10 +127,15 @@ namespace Remote_Control_Boat_Racing_API.Services
         }
 
         /// <summary>
-        /// 
+        /// Encrypts a given admin with the
+        /// API's passphrase.
         /// </summary>
-        /// <param name="admin"></param>
-        /// <returns></returns>
+        /// <param name="admin">
+        /// Admin to be encrypted.
+        /// </param>
+        /// <returns>
+        /// If successful returns the encrypted admin.
+        /// </returns>
         public Admin CreateEnc(Admin admin)
         {
 
@@ -129,10 +157,14 @@ namespace Remote_Control_Boat_Racing_API.Services
         }
 
         /// <summary>
-        /// 
+        /// Update an admin.
         /// </summary>
-        /// <param name="id"></param>
-        /// <param name="adminIn"></param>
+        /// <param name="id">
+        /// ID of the admin to be updated.
+        /// </param>
+        /// <param name="adminIn">
+        /// Updated information.
+        /// </param>
         public void Update(string id, Admin adminIn)
         {
             _admin.ReplaceOne(admin => admin.Id == id, adminIn);
@@ -148,9 +180,11 @@ namespace Remote_Control_Boat_Racing_API.Services
         }
 
         /// <summary>
-        /// 
+        /// Delete an Admin
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">
+        /// ID of the specific admin
+        /// </param>
         public void Remove(string id)
         {
             _admin.DeleteOne(admin => admin.Id == id);

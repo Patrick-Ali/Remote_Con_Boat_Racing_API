@@ -8,49 +8,94 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace Remote_Control_Boat_Racing_API.Models
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class User
     {
+        /// <summary>
+        /// 
+        /// </summary>
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id;
 
+        /// <summary>
+        /// 
+        /// </summary>
         [BsonElement("firstName")]
         public string FirstName { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         [BsonElement("lastName")]
         public string LastName { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         [BsonElement("dob")]
         public string DOB { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         [BsonElement("points")]
         public string Points { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         [BsonElement("posistion")]
         public string Posistion { get; set; }
         //private Boat boat;
 
+        /// <summary>
+        /// 
+        /// </summary>
         [BsonElement("address")]
         public string Address { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         [BsonElement("postCode")]
         public string PostCode { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         [BsonElement("city")]
         public string City { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         [BsonElement("email")]
         public string Email { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         [BsonElement("password")]
         public string Password { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         [BsonElement("phoneNumber")]
         public string PhoneNumber { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         [BsonElement("mobilePhoneNumber")]
         public string MobilePhoneNumber { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         [BsonElement("team")]
         public string Team { get; set; }
 

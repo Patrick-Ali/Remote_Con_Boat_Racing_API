@@ -11,7 +11,8 @@ using System.IO;
 namespace Remote_Control_Boat_Racing_API.Services
 {
     /// <summary>
-    /// 
+    /// This class handels performing encryption and
+    /// decryption operations for the Front End
     /// </summary>
     public class Crypto
     {
@@ -23,11 +24,18 @@ namespace Remote_Control_Boat_Racing_API.Services
         private const int DerivationIterations = 10000;
 
         /// <summary>
-        /// 
+        /// This action performs the encryption operation on
+        /// the data being passed to it.
         /// </summary>
-        /// <param name="plainText"></param>
-        /// <param name="passPhrase"></param>
-        /// <returns></returns>
+        /// <param name="plainText">
+        /// The data being passed to be encrypted.
+        /// </param>
+        /// <param name="passPhrase">
+        /// The key that will be used to encrypt the data
+        /// </param>
+        /// <returns>
+        /// It returns an encrypted string of the data passed in.
+        /// </returns>
         public static string Encrypt(string plainText, string passPhrase)
         {
             // Salt and IV is randomly generated each time, but is preprended to encrypted cipher text
@@ -66,11 +74,18 @@ namespace Remote_Control_Boat_Racing_API.Services
         }
 
         /// <summary>
-        /// 
+        /// This acrtion handels the decryption of a piece of 
+        /// data.
         /// </summary>
-        /// <param name="cipherText"></param>
-        /// <param name="passPhrase"></param>
-        /// <returns></returns>
+        /// <param name="cipherText">
+        /// The encrypted data to be decrypted
+        /// </param>
+        /// <param name="passPhrase">
+        /// The key that will decrypt the data.
+        /// </param>
+        /// <returns>
+        /// A decrypted version of the data passed in.
+        /// </returns>
         public static string Decrypt(string cipherText, string passPhrase)
         {
             // Get the complete stream of bytes that represent:
@@ -124,10 +139,14 @@ namespace Remote_Control_Boat_Racing_API.Services
         //Taken and altered from https://stackoverflow.com/questions/4181198/how-to-hash-a-password/10402129#10402129
 
         /// <summary>
-        /// 
+        /// This action hashes using SHA512 a given string of text.
         /// </summary>
-        /// <param name="password"></param>
-        /// <returns></returns>
+        /// <param name="password">
+        /// The password to hash.
+        /// </param>
+        /// <returns>
+        /// A hashed version of the given text string.
+        /// </returns>
         public static string HashPassword(string password)
         {
             byte[] salt;
@@ -142,11 +161,21 @@ namespace Remote_Control_Boat_Racing_API.Services
         }
 
         /// <summary>
-        /// 
+        /// This action compares two hashed strings to
+        /// see if they match.
         /// </summary>
-        /// <param name="password"></param>
-        /// <param name="storedPassword"></param>
-        /// <returns></returns>
+        /// <param name="password">
+        /// The password submited to be compared against a
+        /// password from the database.
+        /// </param>
+        /// <param name="storedPassword">
+        /// The password from the database to be compared
+        /// against the submited password.
+        /// </param>
+        /// <returns>
+        /// Returns true if the strings match otherwise
+        /// it returns false if the strings do not match.
+        /// </returns>
         public static bool ConfirmPassword(string password, string storedPassword) {
             byte[] hashBytes = Convert.FromBase64String(storedPassword);
             byte[] salt = new byte[16];

@@ -12,18 +12,36 @@ using Remote_Control_Boat_Racing_API.Services;
 
 namespace Remote_Control_Boat_Racing_API.Controllers
 {
+    /// <summary>
+    /// This controller is responsible for managing requests
+    /// for the user collection.
+    /// </summary>
     [Route("api/1.0/[controller]")]
     public class UserController : ControllerBase
     {
         private readonly UserService _userService;
 
-        
 
+        /// <summary>
+        /// Initalisation action
+        /// </summary>
+        /// <param name="userService">
+        /// Service class that contains the actions
+        /// to implement required actions
+        /// </param>
         public UserController(UserService userService) {
             _userService = userService;
         }
 
         // GET: api/<controller>
+        /// <summary>
+        /// Get all users from the database
+        /// </summary>
+        /// <returns>
+        /// If successful return all the users
+        /// otherwise returns a 500 internal
+        /// server error http response.
+        /// </returns>
         [HttpGet]
         public ActionResult<List<User>> Get()
         {
@@ -42,6 +60,17 @@ namespace Remote_Control_Boat_Racing_API.Controllers
         }
 
         // GET api/<controller>/5
+        /// <summary>
+        /// Get a specific user from the database. 
+        /// </summary>
+        /// <param name="id">
+        /// ID of the user to get from the database.
+        /// </param>
+        /// <returns>
+        /// If successful returns the specific user
+        /// otherwise returns a 500 internal
+        /// server error http response.
+        /// </returns>
         [HttpGet("{id:length(24)}", Name = "GetUser")]
         public ActionResult<User> Get(string id)
         {
@@ -65,6 +94,18 @@ namespace Remote_Control_Boat_Racing_API.Controllers
         }
 
         // POST api/<controller>
+        /// <summary>
+        /// Create a new user.
+        /// </summary>
+        /// <param name="user">
+        /// Information to be added to the
+        /// database.
+        /// </param>
+        /// <returns>
+        /// If successful returns the API address location of specific user
+        /// otherwise returns a 500 internal
+        /// server error http response.
+        /// </returns>
         [HttpPost]
         public ActionResult<User> Post([FromBody] User user)
         {
@@ -89,6 +130,20 @@ namespace Remote_Control_Boat_Racing_API.Controllers
         }
 
         // PUT api/<controller>/5
+        /// <summary>
+        /// Update a user.
+        /// </summary>
+        /// <param name="id">
+        /// ID of the user to be updated.
+        /// </param>
+        /// <param name="userIn">
+        /// Updated information.
+        /// </param>
+        /// <returns>
+        /// If successful 204 no content http response
+        /// otherwise returns a 500 internal
+        /// server error http response.
+        /// </returns>
         [HttpPut("{id:length(24)}")]
         public IActionResult Put(string id, [FromBody] User userIn)
         {
@@ -115,6 +170,17 @@ namespace Remote_Control_Boat_Racing_API.Controllers
         }
 
         // DELETE api/<controller>/5
+        /// <summary>
+        /// Delete a user
+        /// </summary>
+        /// <param name="id">
+        /// ID of the specific user
+        /// </param>
+        /// <returns>
+        /// If successful the 204 no content http response
+        /// otherwise returns a 500 internal
+        /// server error http response.
+        /// </returns>
         [HttpDelete("{id:length(24)}")]
         public IActionResult Delete(string id)
         {
