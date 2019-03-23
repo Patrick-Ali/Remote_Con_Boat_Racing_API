@@ -8,10 +8,17 @@ using Microsoft.Extensions.Configuration;
 
 namespace Remote_Control_Boat_Racing_API.Services
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class TeamService
     {
         private readonly IMongoCollection<Team> _team;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="config"></param>
         public TeamService(IConfiguration config)
         {
             var client = new MongoClient(config.GetConnectionString("RCBR"));
@@ -19,16 +26,30 @@ namespace Remote_Control_Boat_Racing_API.Services
             _team = database.GetCollection<Team>("Team");
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public List<Team> Get()
         {
             return _team.Find(teams => true).ToList();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public Team Get(string id)
         {
             return _team.Find<Team>(teams => teams.Id == id).FirstOrDefault();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="teams"></param>
+        /// <returns></returns>
         public Team Create(Team teams)
         {
             _team.InsertOne(teams);

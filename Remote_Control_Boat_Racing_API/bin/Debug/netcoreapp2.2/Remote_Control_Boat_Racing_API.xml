@@ -1,0 +1,229 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Remote_Control_Boat_Racing_API</name>
+    </assembly>
+    <members>
+        <member name="T:Remote_Control_Boat_Racing_API.Services.AdminLoginService">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Services.AdminLoginService.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Services.AdminLoginService.Login(System.String,System.String,System.Collections.Generic.List{Remote_Control_Boat_Racing_API.Models.Admin})">
+            <summary>
+            
+            </summary>
+            <param name="email"></param>
+            <param name="password"></param>
+            <param name="admins"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Services.AdminLoginService.Check(System.String,System.Collections.Generic.List{Remote_Control_Boat_Racing_API.Models.Admin})">
+            <summary>
+            
+            </summary>
+            <param name="email"></param>
+            <param name="users"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Remote_Control_Boat_Racing_API.Services.AdminService">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Services.AdminService.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            
+            </summary>
+            <param name="config"></param>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Services.AdminService.Get">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Services.AdminService.ChangeEnc(System.Collections.Generic.List{Remote_Control_Boat_Racing_API.Models.Admin})">
+            <summary>
+            
+            </summary>
+            <param name="admins"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Services.AdminService.Get(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Services.AdminService.Create(Remote_Control_Boat_Racing_API.Models.Admin)">
+            <summary>
+            
+            </summary>
+            <param name="admin"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Services.AdminService.CreateEnc(Remote_Control_Boat_Racing_API.Models.Admin)">
+            <summary>
+            
+            </summary>
+            <param name="admin"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Services.AdminService.Update(System.String,Remote_Control_Boat_Racing_API.Models.Admin)">
+            <summary>
+            
+            </summary>
+            <param name="id"></param>
+            <param name="adminIn"></param>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Services.AdminService.Remove(Remote_Control_Boat_Racing_API.Models.Admin)">
+            <summary>
+            
+            </summary>
+            <param name="adminIn"></param>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Services.AdminService.Remove(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="id"></param>
+        </member>
+        <member name="T:Remote_Control_Boat_Racing_API.Services.BoatService">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Services.BoatService.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            
+            </summary>
+            <param name="config"></param>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Services.BoatService.Get">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Services.BoatService.Get(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Services.BoatService.Create(Remote_Control_Boat_Racing_API.Models.Boat)">
+            <summary>
+            
+            </summary>
+            <param name="boat"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Services.BoatService.Update(System.String,Remote_Control_Boat_Racing_API.Models.Boat)">
+            <summary>
+            
+            </summary>
+            <param name="id"></param>
+            <param name="boatIn"></param>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Services.BoatService.Remove(Remote_Control_Boat_Racing_API.Models.Boat)">
+            <summary>
+            
+            </summary>
+            <param name="boatIn"></param>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Services.BoatService.Remove(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="id"></param>
+        </member>
+        <member name="T:Remote_Control_Boat_Racing_API.Services.Crypto">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Services.Crypto.Encrypt(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="plainText"></param>
+            <param name="passPhrase"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Services.Crypto.Decrypt(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="cipherText"></param>
+            <param name="passPhrase"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Services.Crypto.HashPassword(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="password"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Services.Crypto.ConfirmPassword(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="password"></param>
+            <param name="storedPassword"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Services.EventRegService.Get">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Services.EventRegService.Get(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Remote_Control_Boat_Racing_API.Services.TeamService">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Services.TeamService.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            
+            </summary>
+            <param name="config"></param>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Services.TeamService.Get">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Services.TeamService.Get(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Remote_Control_Boat_Racing_API.Services.TeamService.Create(Remote_Control_Boat_Racing_API.Models.Team)">
+            <summary>
+            
+            </summary>
+            <param name="teams"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
