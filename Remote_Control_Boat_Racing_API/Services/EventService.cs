@@ -145,7 +145,7 @@ namespace Remote_Control_Boat_Racing_API.Services
                 {
                     tempEvent.Id = eventsIn.Id;
                     tempEvent.Location = eventsIn.Location;
-                    tempEvent.VideoURL = eventsIn.Name;
+                    tempEvent.VideoURL = eventsIn.VideoURL;
                     tempEvent.TimeStart = eventsIn.TimeStart;
                     tempEvent.TimeEnd = eventsIn.TimeEnd;
                     tempEvent.Description = eventsIn.Description;
