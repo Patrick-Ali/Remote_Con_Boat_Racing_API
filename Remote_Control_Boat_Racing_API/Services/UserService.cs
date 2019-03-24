@@ -36,7 +36,7 @@ namespace Remote_Control_Boat_Racing_API.Services
         /// Get all users from the database
         /// </summary>
         /// <returns>
-        /// If successful return all the users.
+        /// If successful returns all the users.
         /// </returns>
         public List<User> Get()
         {
@@ -206,7 +206,6 @@ namespace Remote_Control_Boat_Racing_API.Services
             return crypto;
         }
 
-        // PUT api/<controller>/5
         /// <summary>
         /// Update a user.
         /// </summary>
@@ -238,11 +237,6 @@ namespace Remote_Control_Boat_Racing_API.Services
         /// <param name="id">
         /// ID of the specific user
         /// </param>
-        /// <returns>
-        /// If successful the 204 no content http response
-        /// otherwise returns a 500 internal
-        /// server error http response.
-        /// </returns>
         public void Remove(string id)
         {
             _user.DeleteOne(user => user.Id == id);

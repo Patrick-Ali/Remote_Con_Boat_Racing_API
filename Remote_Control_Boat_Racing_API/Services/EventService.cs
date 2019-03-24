@@ -63,7 +63,7 @@ namespace Remote_Control_Boat_Racing_API.Services
         /// Get all events from the database
         /// </summary>
         /// <returns>
-        /// If successful return all the events
+        /// If successful returns all the events
         /// </returns>
         public List<Event> Get()
         {
@@ -77,7 +77,7 @@ namespace Remote_Control_Boat_Racing_API.Services
         /// ID of the event to get from the database
         /// </param>
         /// <returns>
-        /// If successful return the specific event
+        /// If successful returns the specific event
         /// </returns>
         public EventIn Get(string id)
         {

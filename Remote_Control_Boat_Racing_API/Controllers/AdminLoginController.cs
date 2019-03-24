@@ -42,7 +42,7 @@ namespace Remote_Control_Boat_Racing_API.Controllers
         /// Get all admins from the database
         /// </summary>
         /// <returns>
-        /// If successful rewturn all the admins
+        /// If successful returns all the admins
         /// other wise returns null.
         /// </returns>
         public List<Admin> Get()
@@ -67,7 +67,7 @@ namespace Remote_Control_Boat_Racing_API.Controllers
         /// ID of the admin to get from the database
         /// </param>
         /// <returns>
-        /// If successful the specific admin
+        /// If successful returns the specific admin
         /// otherwise returns a 500 internal
         /// server error http response.
         /// </returns>

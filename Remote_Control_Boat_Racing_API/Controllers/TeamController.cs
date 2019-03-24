@@ -39,7 +39,7 @@ namespace Remote_Control_Boat_Racing_API.Controllers
         /// Get all teams from the database
         /// </summary>
         /// <returns>
-        /// If successful return all the teams
+        /// If successful returns all the teams
         /// otherwise returns a 500 internal
         /// server error http response.
         /// </returns>
@@ -68,7 +68,7 @@ namespace Remote_Control_Boat_Racing_API.Controllers
         /// ID of the team to get from the database.
         /// </param>
         /// <returns>
-        /// If successful the specific team
+        /// If successful returns the specific team
         /// otherwise returns a 500 internal
         /// server error http response.
         /// </returns>
@@ -103,7 +103,7 @@ namespace Remote_Control_Boat_Racing_API.Controllers
         /// database.
         /// </param>
         /// <returns>
-        /// If successful the API address location of specific team
+        /// If successful returns the API address location of specific team
         /// otherwise returns a 500 internal
         /// server error http response.
         /// </returns>
@@ -136,7 +136,7 @@ namespace Remote_Control_Boat_Racing_API.Controllers
         /// Updated information.
         /// </param>
         /// <returns>
-        /// If successful 204 no content http response
+        /// If successful returns 204 no content http response
         /// otherwise returns a 500 internal
         /// server error http response.
         /// </returns>
@@ -173,7 +173,7 @@ namespace Remote_Control_Boat_Racing_API.Controllers
         /// ID of the specific team
         /// </param>
         /// <returns>
-        /// If successful the 204 no content http response
+        /// If successful returns the 204 no content http response
         /// otherwise returns a 500 internal
         /// server error http response.
         /// </returns>

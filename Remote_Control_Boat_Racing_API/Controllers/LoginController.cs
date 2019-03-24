@@ -41,7 +41,7 @@ namespace Remote_Control_Boat_Racing_API.Controllers
         /// Get all users from the database
         /// </summary>
         /// <returns>
-        /// If successful rewturn all the users
+        /// If successful returns all the users
         /// </returns>
         public List<User> Get()
         {
@@ -55,7 +55,7 @@ namespace Remote_Control_Boat_Racing_API.Controllers
         /// ID of the user to get from the database
         /// </param>
         /// <returns>
-        /// If successful the specific user
+        /// If successful returns the specific user
         /// otherwise returns a 500 internal
         /// server error http response.
         /// </returns>

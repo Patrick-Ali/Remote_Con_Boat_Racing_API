@@ -23,7 +23,6 @@ namespace Remote_Control_Boat_Racing_API.Controllers
 
         // GET: api/<controller>
 
-        // GET: api/<controller>
         /// <summary>
         /// Initalisation action
         /// </summary>
@@ -40,7 +39,7 @@ namespace Remote_Control_Boat_Racing_API.Controllers
         /// Get all event regs from the database
         /// </summary>
         /// <returns>
-        /// If successful return all the event regs
+        /// If successful returns all the event regs
         /// otherwise returns a 500 internal
         /// server error http response.
         /// </returns>
@@ -67,7 +66,7 @@ namespace Remote_Control_Boat_Racing_API.Controllers
         /// ID of the event reg to get from the database
         /// </param>
         /// <returns>
-        /// If successful the specific event reg
+        /// If successful returns the specific event reg
         /// otherwise returns a 500 internal
         /// server error http response.
         /// </returns>
@@ -102,7 +101,7 @@ namespace Remote_Control_Boat_Racing_API.Controllers
         /// database.
         /// </param>
         /// <returns>
-        /// If successful the API address location of specific event reg
+        /// If successful returns the API address location of specific event reg
         /// otherwise returns a 500 internal
         /// server error http response.
         /// </returns>
@@ -135,7 +134,7 @@ namespace Remote_Control_Boat_Racing_API.Controllers
         /// Updated information.
         /// </param>
         /// <returns>
-        /// If successful 204 no content http response
+        /// If successful returns 204 no content http response
         /// otherwise returns a 500 internal
         /// server error http response.
         /// </returns>
@@ -172,7 +171,7 @@ namespace Remote_Control_Boat_Racing_API.Controllers
         /// ID of the specific event reg
         /// </param>
         /// <returns>
-        /// If successful the 204 no content http response
+        /// If successful returns the 204 no content http response
         /// otherwise returns a 500 internal
         /// server error http response.
         /// </returns>

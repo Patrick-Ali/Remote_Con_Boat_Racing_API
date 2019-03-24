@@ -39,7 +39,7 @@ namespace Remote_Control_Boat_Racing_API.Controllers
         /// Get all events from the database
         /// </summary>
         /// <returns>
-        /// If successful return all the events
+        /// If successful returns all the events
         /// otherwise returns a 500 internal
         /// server error http response.
         /// </returns>
@@ -66,7 +66,7 @@ namespace Remote_Control_Boat_Racing_API.Controllers
         /// ID of the event to get from the database
         /// </param>
         /// <returns>
-        /// If successful return the specific event
+        /// If successful returns the specific event
         /// otherwise returns a 500 internal
         /// server error http response.
         /// </returns>
@@ -134,7 +134,7 @@ namespace Remote_Control_Boat_Racing_API.Controllers
         /// Updated information.
         /// </param>
         /// <returns>
-        /// If successful 204 no content http response
+        /// If successful returns 204 no content http response
         /// otherwise returns a 500 internal
         /// server error http response.
         /// </returns>
@@ -171,7 +171,7 @@ namespace Remote_Control_Boat_Racing_API.Controllers
         /// ID of the specific event
         /// </param>
         /// <returns>
-        /// If successful the 204 no content http response
+        /// If successful returns the 204 no content http response
         /// otherwise returns a 500 internal
         /// server error http response.
         /// </returns>

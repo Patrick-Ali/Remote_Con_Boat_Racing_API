@@ -35,7 +35,7 @@ namespace Remote_Control_Boat_Racing_API.Services
         /// Get all admins from the database
         /// </summary>
         /// <returns>
-        /// If successful return all the admins.
+        /// If successful returns all the admins.
         /// </returns>
         public List<Admin> Get()
         {

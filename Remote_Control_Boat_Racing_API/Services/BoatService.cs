@@ -9,16 +9,19 @@ using Microsoft.Extensions.Configuration;
 namespace Remote_Control_Boat_Racing_API.Services
 {
     /// <summary>
-    /// 
+    /// This class is responsible for processing data
+    /// for the boat collection.
     /// </summary>
     public class BoatService
     {
         private readonly IMongoCollection<Boat> _boat;
 
         /// <summary>
-        /// 
+        /// Initalisation action
         /// </summary>
-        /// <param name="config"></param>
+        /// <param name="config">
+        /// Configuratuion for the database.
+        /// </param>
         public BoatService(IConfiguration config)
         {
             var client = new MongoClient(config.GetConnectionString("RCBR"));
@@ -27,29 +30,40 @@ namespace Remote_Control_Boat_Racing_API.Services
         }
 
         /// <summary>
-        /// 
+        /// Get all boats from the database
         /// </summary>
-        /// <returns></returns>
+        /// <returns>
+        /// If successful returns all the boats
+        /// </returns>
         public List<Boat> Get()
         {
             return _boat.Find(boat => true).ToList();
         }
 
         /// <summary>
-        /// 
+        /// Get a specific boat from the database. 
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
+        /// <param name="id">
+        /// ID of the boat to get from the database.
+        /// </param>
+        /// <returns>
+        /// If successful returns the specific boat
+        /// </returns>
         public Boat Get(string id)
         {
             return _boat.Find<Boat>(boat => boat.Id == id).FirstOrDefault();
         }
 
         /// <summary>
-        /// 
+        /// Create a new boat.
         /// </summary>
-        /// <param name="boat"></param>
-        /// <returns></returns>
+        /// <param name="boat">
+        /// Information to be added to the
+        /// database.
+        /// </param>
+        /// <returns>
+        /// If successful returns the boat created.
+        /// </returns>
         public Boat Create(Boat boat)
         {
             List<Boat> boats = Get();
@@ -65,10 +79,14 @@ namespace Remote_Control_Boat_Racing_API.Services
         }
 
         /// <summary>
-        /// 
+        /// Update a boat.
         /// </summary>
-        /// <param name="id"></param>
-        /// <param name="boatIn"></param>
+        /// <param name="id">
+        /// ID of the boat to be updated.
+        /// </param>
+        /// <param name="boatIn">
+        /// Updated information.
+        /// </param>
         public void Update(string id, Boat boatIn)
         {
 
@@ -85,9 +103,11 @@ namespace Remote_Control_Boat_Racing_API.Services
         }
 
         /// <summary>
-        /// 
+        /// Delete a Boat
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">
+        /// ID of the specific boat
+        /// </param>
         public void Remove(string id)
         {
             _boat.DeleteOne(boat => boat.Id == id);

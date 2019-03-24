@@ -16,7 +16,7 @@ namespace Remote_Control_Boat_Racing_API.Services
     {
         private readonly IMongoCollection<User> _user;
         private readonly string passPhrase = "l%HJb5N^O@fl0K02H9PsxlR9algJTzK7ARBjJsd3fPG0&GwkrU";
-        private readonly string passPhrase2 = "yUVyb$shjp4*%S6G!fx5t%i!fTZ@b8KQ#ymQyfhgNQ$#mKB0vA";
+        
 
         /// <summary>
         /// Initalisation action
